@@ -12,6 +12,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 import { FormsModule } from '@angular/forms';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { NgxLocalStorageModule, NGX_LOCAL_STORAGE_SERIALIZER } from 'ngx-localstorage';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     AppRoutingModule,
     FontAwesomeModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    NgxLocalStorageModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

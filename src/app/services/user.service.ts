@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { tap, catchError } from 'rxjs/operators';
 import { of, Observable } from 'rxjs';
+import { LocalStorageService } from 'ngx-localstorage';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,9 @@ export class UserService {
   };
   loggedUser: any;
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private storageService: LocalStorageService
+
   ) { }
 
 
@@ -24,12 +27,20 @@ export class UserService {
       .pipe(tap(response => {
         console.log('login:', response);
         this.loggedUser = response;
+        if (rememberMe) this.storageService.set("loggedUser", this.loggedUser);
       }),
         catchError(error => {
           console.log(error);
           this.loggedUser = null;
+
+          this.storageService.clear();
           return of(null);
         })
       );
+  }
+
+  getLoggedUser(): void {
+    this.loggedUser = this.storageService.get("loggedUser");
+    return this.loggedUser;
   }
 }

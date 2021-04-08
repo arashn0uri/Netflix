@@ -1,0 +1,20 @@
+<div class="container">
+  <input type="text" class="w-100 mt-2 p-1 border rounded" placeholder="Search" />
+  <div class="row row-cols-6">
+    <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-4" *ngFor="let film of films">
+      <div class="card h-100 text-center">
+        <img [src]="film.cover_url" class="card-img-top" [alt]="film.title" [title]="film.description">
+        <div class="card-body">
+          <h5 class="card-title">{{ film.title }}</h5>
+          <p class="card-text">{{ film.description }}</p>
+        </div>
+        <div class="card-footer bg-light">
+          <button class="btn btn-outline-dark">More details</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="isWating">
+    <div class="loader"></div>
+  </div>
+</div>

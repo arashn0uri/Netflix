@@ -1,4 +1,3 @@
-
 import { FilmService } from './../../services/film.service';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -9,15 +8,15 @@ import { Observable } from 'rxjs';
   styleUrls: ['./film-list.component.scss'],
 })
 export class FilmListComponent implements OnInit {
-  isWating = true;
+  isWaiting = true;
   films: any = [];
-  constructor(private FilmService: FilmService) { }
+  constructor(private FilmService: FilmService) {}
 
   ngOnInit(): void {
     let observable: Observable<any> = this.FilmService.getFilms();
     observable.subscribe((response) => {
       this.films = response;
-      this.isWating = false;
+      this.isWaiting = false;
     });
   }
 }

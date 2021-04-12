@@ -13,6 +13,7 @@ import { ResetPasswordComponent } from './components/reset-password/reset-passwo
 import { FormsModule } from '@angular/forms';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { NgxLocalStorageModule, NGX_LOCAL_STORAGE_SERIALIZER } from 'ngx-localstorage';
+import { FilmDetailsComponent } from './components/film-details/film-details.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { NgxLocalStorageModule, NGX_LOCAL_STORAGE_SERIALIZER } from 'ngx-localst
     FilmListComponent,
     HeaderComponent,
     ResetPasswordComponent,
-    DashboardComponent
+    DashboardComponent,
+    FilmDetailsComponent
   ],
   imports: [
     BrowserModule,

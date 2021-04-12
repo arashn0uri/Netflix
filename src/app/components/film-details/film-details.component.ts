@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { FilmService } from '../../services/film.service';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
+import { faStarHalfAlt } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-film-details',
@@ -9,6 +11,8 @@ import { FilmService } from '../../services/film.service';
   styleUrls: ['./film-details.component.scss'],
 })
 export class FilmDetailsComponent implements OnInit {
+  faStar = faStar;
+  faStarHalfAlt = faStarHalfAlt;
   film: any = {};
 
   constructor(
@@ -19,12 +23,27 @@ export class FilmDetailsComponent implements OnInit {
   ngOnInit(): void {
     const routeParams = this.route.snapshot.paramMap;
     const filmIdFromRoute = routeParams.get('filmId');
-    console.log(filmIdFromRoute);
     let observable: Observable<any> = this.filmService.getFilms();
     observable.subscribe((response) => {
       this.film = response.find(
         (film: { id: string }) => film.id == filmIdFromRoute
       );
     });
+  }
+  createRangeForStar(number: number, color: string) {
+    number = color === 'gold' ? Math.floor(number) : Math.floor(number);
+    var items: number[] = [];
+    for (var i = 1; i <= number; i++) {
+      items.push(i);
+    }
+    return items;
+  }
+  createRangeForHalfStar(number: number, color: string) {
+    number = color === 'gold' ? Math.floor(number) : Math.ceil(number);
+    var items: number[] = [];
+    for (var i = 1; i <= number; i++) {
+      items.push(i);
+    }
+    return items;
   }
 }

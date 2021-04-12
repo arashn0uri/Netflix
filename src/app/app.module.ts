@@ -12,7 +12,10 @@ import { HeaderComponent } from './components/header/header.component';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 import { FormsModule } from '@angular/forms';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { NgxLocalStorageModule, NGX_LOCAL_STORAGE_SERIALIZER } from 'ngx-localstorage';
+import {
+  NgxLocalStorageModule,
+  NGX_LOCAL_STORAGE_SERIALIZER,
+} from 'ngx-localstorage';
 import { FilmDetailsComponent } from './components/film-details/film-details.component';
 
 @NgModule({
@@ -24,7 +27,7 @@ import { FilmDetailsComponent } from './components/film-details/film-details.com
     HeaderComponent,
     ResetPasswordComponent,
     DashboardComponent,
-    FilmDetailsComponent
+    FilmDetailsComponent,
   ],
   imports: [
     BrowserModule,
@@ -32,9 +35,9 @@ import { FilmDetailsComponent } from './components/film-details/film-details.com
     FontAwesomeModule,
     HttpClientModule,
     FormsModule,
-    NgxLocalStorageModule.forRoot()
+    NgxLocalStorageModule.forRoot(),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

@@ -1,15 +1,61 @@
-<div class="container">
-  <input type="text" class="w-100 mt-2 p-1 border rounded" placeholder="Search" />
-  <div class="row row-cols-6">
-    <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-4">
-      <div class="card h-100 text-center">
-        <img [src]="film.cover_url" class="card-img-top" [alt]="film.title" [title]="film.description">
-        <div class="card-body">
-          <h5 class="card-title">{{ film.title }}</h5>
-          <p class="card-text">{{ film.description }}</p>
+<div class="container h-50">
+  <div class="row">
+    <div class="col">
+      <div class="row-cols-6">
+        <div class="col-12 col-md-10 mt-4">
+          <div class="card text-center">
+            <div class="card-body">
+              <h4 class="card-title">
+                <strong>Title: </strong>{{ film.title }}
+              </h4>
+              <h5><strong>Director: </strong> {{ film.director }}</h5>
+              <h6><strong>Vote: </strong> {{ film.vote }}</h6>
+              <fa-icon
+                [icon]="faStar"
+                class="iconGoldColor"
+                *ngFor="let index of createRangeForStar(film.vote, 'gold')"
+              ></fa-icon>
+              <fa-icon
+                [icon]="faStarHalfAlt"
+                class="iconGoldColor"
+                *ngFor="
+                  let index of createRangeForHalfStar(film.vote % 1, 'silver')
+                "
+              ></fa-icon>
+              <fa-icon
+                [icon]="faStar"
+                class="iconSilverColor"
+                *ngFor="
+                  let index of createRangeForStar(5 - film.vote, 'silver')
+                "
+              ></fa-icon>
+              <p class="card-text">{{ film.description }}</p>
+              <p class="text-primary">
+                <span *ngFor="let genre of film.genres"
+                  >#{{ genre.name }}
+                </span>
+              </p>
+            </div>
+            <div class="card-footer bg-light">
+              <button class="btn btn-outline-dark" routerLink="/films">
+                Go back
+              </button>
+            </div>
+          </div>
         </div>
-        <div class="card-footer bg-light">
-          <button class="btn btn-outline-dark" [routerLink]="['/filmDetails', film.id]">More details</button>
+      </div>
+    </div>
+    <div class="col">
+      <div class="row-cols-6">
+        <div class="col-12 col-md-9 mt-4">
+          <div>
+            <img
+              [src]="film.cover_url"
+              class="card-img-top"
+              [alt]="film.title"
+              [title]="film.description"
+            />
+          </div>
         </div>
       </div>
     </div>

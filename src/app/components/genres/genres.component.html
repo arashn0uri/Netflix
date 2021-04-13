@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="row mx-0 text-center justify-content-around">
+    <div
+      class="card my-3 p-0 mx-3 col-6 col-sm-4 col-md-3 col-lg-2 justify-content-between"
+      *ngFor="let genre of genres"
+    >
+      <fa-icon [icon]="film" size="6x"></fa-icon>
+      <h5 class="card-header">{{ genre.name }}</h5>
+      <a href="#" class="btn btn-outline-primary">Details</a>
+    </div>
+  </div>
+  <div *ngIf="isWating">
+    <div class="loader"></div>
+  </div>
+</div>

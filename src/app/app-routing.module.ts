@@ -6,6 +6,9 @@ import { ResetPasswordComponent } from './components/reset-password/reset-passwo
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { FilmDetailsComponent } from './components/film-details/film-details.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { AddFilmComponent } from './components/film/add-film.component';
+import { ActorsComponent } from './components/actors/actors.component';
+import { GenresComponent } from './components/genres/genres.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -14,7 +17,10 @@ const routes: Routes = [
   { path: 'reset', component: ResetPasswordComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'filmDetails/:filmTitle', component: FilmDetailsComponent },
-  { path: 'profile', component: ProfileComponent }
+  { path: 'profile', component: ProfileComponent },
+  { path: 'add-film', component: AddFilmComponent },
+  { path: 'actors', component: ActorsComponent },
+  { path: 'genres', component: GenresComponent },
 ];
 
 @NgModule({

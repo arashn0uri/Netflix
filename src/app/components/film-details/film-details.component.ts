@@ -5,6 +5,7 @@ import { FilmService } from '../../services/film.service';
 import { faStar as fullStar } from '@fortawesome/free-solid-svg-icons';
 import { faStarHalfAlt as halfStar } from '@fortawesome/free-solid-svg-icons';
 import { faStar as BlankStar } from '@fortawesome/free-regular-svg-icons';
+import { Film } from 'src/app/models/film';
 
 @Component({
   selector: 'app-film-details',

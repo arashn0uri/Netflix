@@ -1,0 +1,137 @@
+<div class="container">
+  <h1 class="text-center">ADD FILM</h1>
+  <form>
+    <div class="form-group row">
+      <label for="title" class="col-sm-2 col-form-label">Title</label>
+      <div class="col-sm-10">
+        <input
+          type="text"
+          class="form-control"
+          id="title"
+          [(ngModel)]="film.title"
+        />
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="director" class="col-sm-2 col-form-label">Director</label>
+      <div class="col-sm-10">
+        <input
+          type="text"
+          class="form-control"
+          id="director"
+          [(ngModel)]="film.director"
+        />
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="duration" class="col-sm-2 col-form-label">Duration</label>
+      <div class="col-sm-10">
+        <input
+          type="time"
+          class="form-control"
+          id="duration"
+          [(ngModel)]="film.duration"
+        />
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="release_year" class="col-sm-2 col-form-label"
+        >Release Year</label
+      >
+      <div class="col-sm-10">
+        <input
+          type="number"
+          class="form-control"
+          id="release_year"
+          [(ngModel)]="film.release_year"
+        />
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="tags" class="col-sm-2 col-form-label">Tags</label>
+      <div class="col-sm-10">
+        <input
+          type="text"
+          class="form-control"
+          id="tags"
+          [(ngModel)]="film.tags"
+        />
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="stars" class="col-sm-2 col-form-label">Stars</label>
+      <div class="col-sm-10">
+        <input
+          type="number"
+          class="form-control"
+          id="stars"
+          [(ngModel)]="film.stars"
+        />
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="actors" class="col-sm-2 col-form-label">Actors</label>
+      <div class="col-sm-10">
+        <input
+          type="text"
+          class="form-control"
+          id="actors"
+          [(ngModel)]="film.actors"
+        />
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="genres" class="col-sm-2 col-form-label">Genres</label>
+      <div class="col-sm-10">
+        <input
+          type="text"
+          class="form-control"
+          id="genres"
+          [(ngModel)]="film.genres"
+        />
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="vote" class="col-sm-2 col-form-label">Vote</label>
+      <div class="col-sm-10">
+        <input
+          type="text"
+          class="form-control"
+          id="vote"
+          [(ngModel)]="film.vote"
+        />
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="cover_url" class="col-sm-2 col-form-label">cover</label>
+      <div class="col-sm-10">
+        <input
+          type="text"
+          class="form-control"
+          id="cover_url"
+          [(ngModel)]="film.cover_url"
+        />
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="description" class="col-sm-2 col-form-label"
+        >Description</label
+      >
+      <div class="col-sm-10">
+        <textarea
+          type="password"
+          class="form-control"
+          id="description"
+          [(ngModel)]="film.description"
+        ></textarea>
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-sm-10">
+        <button type="submit" class="btn btn-primary" (click)="add()">
+          Add
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

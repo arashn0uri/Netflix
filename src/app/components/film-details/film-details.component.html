@@ -35,7 +35,7 @@
           <p class="card-text">{{ film.description }}</p>
           <div class="card-text">
             <label for="actors"><strong>Actors:</strong></label>
-            <span *ngFor="let actor of film.actors"
+            <span *ngFor="let actor of film.actors; index as i"
               >{{ actor.firstname + actor.lastname }},
             </span>
           </div>

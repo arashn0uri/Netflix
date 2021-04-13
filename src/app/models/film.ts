@@ -3,16 +3,15 @@ export interface Film {
   id: number;
   title: string;
   description: string;
-  plot?: string;
+  plot: string;
   director: string;
   duration: Time;
   release_year: number;
-  cover_url?: string;
+  cover_url: string;
   tags: string;
   created_by: number;
   stars: number;
   actors: any[];
   genres: any[];
-  votes: any[];
-  vote?: number;
+  vote: number;
 }

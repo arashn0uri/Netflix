@@ -13,11 +13,13 @@ import { ResetPasswordComponent } from './components/reset-password/reset-passwo
 import { FormsModule } from '@angular/forms';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import {
-  NgxLocalStorageModule,
-  NGX_LOCAL_STORAGE_SERIALIZER,
+  NgxLocalStorageModule
 } from 'ngx-localstorage';
 import { FilmDetailsComponent } from './components/film-details/film-details.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { AddFilmComponent } from './components/film/add-film.component';
+import { ActorsComponent } from './components/actors/actors.component';
+import { GenresComponent } from './components/genres/genres.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,9 @@ import { ProfileComponent } from './components/profile/profile.component';
     DashboardComponent,
     FilmDetailsComponent,
     ProfileComponent,
+    AddFilmComponent,
+    ActorsComponent,
+    GenresComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,4 +47,4 @@ import { ProfileComponent } from './components/profile/profile.component';
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

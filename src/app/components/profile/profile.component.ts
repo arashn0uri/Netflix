@@ -1,13 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
+import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
+import { User } from 'src/app/models/user';
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  selector: 'app-profile',
+  templateUrl: './profile.component.html',
+  styleUrls: ['./profile.component.scss']
 })
-export class HeaderComponent implements OnInit {
-  user: any;
+export class ProfileComponent implements OnInit {
+  user: User | null = null;
+  profile = faUserCircle;
   constructor(
     public userService: UserService
   ) { }
@@ -19,6 +22,5 @@ export class HeaderComponent implements OnInit {
   loggedOut(): void {
     this.user = this.userService.logeedOut();
   }
-
 
 }

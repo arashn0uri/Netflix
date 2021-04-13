@@ -17,6 +17,7 @@ import {
   NGX_LOCAL_STORAGE_SERIALIZER,
 } from 'ngx-localstorage';
 import { FilmDetailsComponent } from './components/film-details/film-details.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { FilmDetailsComponent } from './components/film-details/film-details.com
     ResetPasswordComponent,
     DashboardComponent,
     FilmDetailsComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,

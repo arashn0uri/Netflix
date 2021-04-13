@@ -8,7 +8,7 @@
           <p class="card-text">{{ film.description }}</p>
         </div>
         <div class="card-footer bg-light">
-          <button class="btn btn-outline-dark">More details</button>
+          <button class="btn btn-outline-dark" [routerLink]="['/filmDetails', film.title]">More details</button>
         </div>
       </div>
     </div>

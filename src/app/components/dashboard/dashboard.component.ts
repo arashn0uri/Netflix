@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { FilmService } from '../../services/film.service';
+import { Film } from 'src/app/models/film';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -8,7 +9,7 @@ import { FilmService } from '../../services/film.service';
 })
 export class DashboardComponent implements OnInit {
   isWating = true;
-  films: any = [];
+  films: Film[] = [];
   constructor(
     private FilmService: FilmService
   ) { }

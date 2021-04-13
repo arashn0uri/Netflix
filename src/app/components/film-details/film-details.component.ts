@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { FilmService } from '../../services/film.service';
-import { faStar } from '@fortawesome/free-solid-svg-icons';
-import { faStarHalfAlt } from '@fortawesome/free-solid-svg-icons';
+import { faStar as fullStar } from '@fortawesome/free-solid-svg-icons';
+import { faStarHalfAlt as halfStar } from '@fortawesome/free-solid-svg-icons';
+import { faStar as BlankStar } from '@fortawesome/free-regular-svg-icons';
 
 @Component({
   selector: 'app-film-details',
@@ -11,22 +12,23 @@ import { faStarHalfAlt } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./film-details.component.scss'],
 })
 export class FilmDetailsComponent implements OnInit {
-  faStar = faStar;
-  faStarHalfAlt = faStarHalfAlt;
+  fullStar = fullStar;
+  halfStar = halfStar;
+  blankStar = BlankStar;
   film: any = {};
 
   constructor(
     private filmService: FilmService,
     private route: ActivatedRoute
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     const routeParams = this.route.snapshot.paramMap;
-    const filmIdFromRoute = routeParams.get('filmId');
+    const filmIdFromRoute = routeParams.get('filmTitle');
     let observable: Observable<any> = this.filmService.getFilms();
     observable.subscribe((response) => {
       this.film = response.find(
-        (film: { id: string }) => film.id == filmIdFromRoute
+        (film: { title: string }) => film.title == filmIdFromRoute
       );
     });
   }

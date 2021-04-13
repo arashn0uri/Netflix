@@ -1,0 +1,11 @@
+<div class="container mx-auto" *ngIf="user !== null">
+  <div class="card mx-auto text-center mt-5" style="width: 18rem;">
+    <fa-icon [icon]="profile" size="6x"></fa-icon>
+    <div class="card-body">
+      <h5 class="card-title">{{ user.username }}</h5>
+      <h5 class="card-title">{{ user.firstname + user.lastname }}</h5>
+      <p class="card-text">{{ user.id }}</p>
+      <a href="#" class="btn btn-primary" (click)="loggedOut()">Logout</a>
+    </div>
+  </div>
+</div>

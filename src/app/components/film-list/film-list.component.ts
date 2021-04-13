@@ -1,6 +1,7 @@
 import { FilmService } from './../../services/film.service';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Film } from 'src/app/models/film';
 
 @Component({
   selector: 'app-film-list',
@@ -9,14 +10,13 @@ import { Observable } from 'rxjs';
 })
 export class FilmListComponent implements OnInit {
   isWaiting = true;
-  films: any = [];
-  constructor(private FilmService: FilmService) {}
+  films: Film[] = [];
+  constructor(private FilmService: FilmService) { }
 
   ngOnInit(): void {
     let observable: Observable<any> = this.FilmService.getFilms();
     observable.subscribe((response) => {
       this.films = response;
-      console.log(this.films);
       this.isWaiting = false;
     });
   }

@@ -9,15 +9,24 @@ import { Film } from 'src/app/models/film';
   styleUrls: ['./film-list.component.scss'],
 })
 export class FilmListComponent implements OnInit {
+  search: string = '';
   isWaiting = true;
   films: Film[] = [];
-  constructor(private FilmService: FilmService) { }
+  showedFilms: Film[] = this.films;
+  constructor(private FilmService: FilmService) {}
 
   ngOnInit(): void {
     let observable: Observable<any> = this.FilmService.getFilms();
     observable.subscribe((response) => {
       this.films = response;
+      this.showedFilms = response;
       this.isWaiting = false;
+    });
+  }
+
+  change() {
+    this.showedFilms = this.films.filter((film) => {
+      return film.title.toLowerCase().includes(this.search.toLowerCase());
     });
   }
 }

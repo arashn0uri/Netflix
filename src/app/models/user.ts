@@ -5,6 +5,7 @@ export interface User {
   firstname: string;
   lastname: string;
   birthdate: Date;
+  photo_url: string;
   favorite_films: number[];
   favorite_actors: number[];
   favorite_genre: number[];

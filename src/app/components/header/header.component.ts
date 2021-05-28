@@ -4,13 +4,11 @@ import { UserService } from 'src/app/services/user.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
   user: any;
-  constructor(
-    public userService: UserService
-  ) { }
+  constructor(public userService: UserService) {}
 
   ngOnInit(): void {
     this.user = this.userService.getLoggedUser();
@@ -19,6 +17,4 @@ export class HeaderComponent implements OnInit {
   loggedOut(): void {
     this.user = this.userService.logeedOut();
   }
-
-
 }

@@ -12,14 +12,14 @@ import { HeaderComponent } from './components/header/header.component';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 import { FormsModule } from '@angular/forms';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import {
-  NgxLocalStorageModule
-} from 'ngx-localstorage';
+import { NgxLocalStorageModule } from 'ngx-localstorage';
 import { FilmDetailsComponent } from './components/film-details/film-details.component';
 import { ProfileComponent } from './components/profile/profile.component';
-import { AddFilmComponent } from './components/film/add-film.component';
+import { AddFilmComponent } from './components/add-film/add-film.component';
 import { ActorsComponent } from './components/actors/actors.component';
 import { GenresComponent } from './components/genres/genres.component';
+import { AddActorComponent } from './components/add-actor/add-actor.component';
+import { AddGenreComponent } from './components/add-genre/add-genre.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +35,8 @@ import { GenresComponent } from './components/genres/genres.component';
     AddFilmComponent,
     ActorsComponent,
     GenresComponent,
+    AddActorComponent,
+    AddGenreComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,4 +49,4 @@ import { GenresComponent } from './components/genres/genres.component';
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

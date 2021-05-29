@@ -6,9 +6,11 @@ import { ResetPasswordComponent } from './components/reset-password/reset-passwo
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { FilmDetailsComponent } from './components/film-details/film-details.component';
 import { ProfileComponent } from './components/profile/profile.component';
-import { AddFilmComponent } from './components/film/add-film.component';
+import { AddFilmComponent } from './components/add-film/add-film.component';
 import { ActorsComponent } from './components/actors/actors.component';
 import { GenresComponent } from './components/genres/genres.component';
+import { AddActorComponent } from './components/add-actor/add-actor.component';
+import { AddGenreComponent } from './components/add-genre/add-genre.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -21,10 +23,13 @@ const routes: Routes = [
   { path: 'add-film', component: AddFilmComponent },
   { path: 'actors', component: ActorsComponent },
   { path: 'genres', component: GenresComponent },
+  { path: 'add-film', component: AddFilmComponent },
+  { path: 'add-actor', component: AddActorComponent },
+  { path: 'add-genre', component: AddGenreComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

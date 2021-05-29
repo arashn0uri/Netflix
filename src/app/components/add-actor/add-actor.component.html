@@ -1,0 +1,86 @@
+<div class="container">
+  <div
+    class="m-auto text-center text-info pt-3 font-weight-bold"
+    style="font-size: 2rem"
+  >
+    ADD NEW ACTOR
+  </div>
+  <hr class="text-info" />
+  <div class="row">
+    <div class="col-md-4">
+      <img
+        [src]="
+          actor.photo_url ||
+          'https://raw.githubusercontent.com/julien-gargot/images-placeholder/master/placeholder-portrait.png'
+        "
+        alt=""
+        srcset=""
+        class="img-thumbnail mb-3 rounded"
+      />
+    </div>
+    <form class="col-md-8">
+      <div class="form-group row">
+        <label for="firstname" class="col-sm-2 col-form-label"
+          >First name</label
+        >
+        <div class="col-sm-10">
+          <input
+            type="text"
+            class="form-control"
+            id="firstname"
+            [(ngModel)]="actor.firstname"
+            name="firstname"
+            placeholder="es. Brad"
+          />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="lastname" class="col-sm-2 col-form-label">Last Name</label>
+        <div class="col-sm-10">
+          <input
+            type="text"
+            class="form-control"
+            id="lastname"
+            [(ngModel)]="actor.lastname"
+            name="lastname"
+            placeholder="es. Pitt"
+          />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="photo_url" class="col-sm-2 col-form-label">Photo</label>
+        <div class="col-sm-10">
+          <input
+            type="text"
+            class="form-control"
+            id="photo-url"
+            [(ngModel)]="actor.photo_url"
+            name="photo_url"
+            placeholder="Put the link of actor's photo here..."
+          />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="birthdate" class="col-sm-2 col-form-label"
+          >Date of birth</label
+        >
+        <div class="col-sm-10">
+          <input
+            type="date"
+            class="form-control"
+            id="birthdate"
+            [(ngModel)]="actor.birthdate"
+            name="birthdate"
+          />
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-sm-10">
+          <button type="submit" class="btn btn-primary" (click)="add()">
+            Add
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

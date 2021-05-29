@@ -10,6 +10,7 @@ export interface Film {
   cover_url: string;
   tags: string;
   created_by: number;
+  created_at?: Date;
   stars: number;
   actors: any[];
   genres: any[];

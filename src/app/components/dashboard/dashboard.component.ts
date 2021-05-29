@@ -5,19 +5,19 @@ import { Film } from 'src/app/models/film';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss']
+  styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit {
   isWating = true;
-  films: Film[] = [];
-  constructor(
-    private FilmService: FilmService
-  ) { }
+  lastFilms: Film[] = [];
+  topFilms: Film[] = [];
+  constructor(private FilmService: FilmService) {}
 
   ngOnInit(): void {
     let observable: Observable<any> = this.FilmService.getFilms();
     observable.subscribe((response) => {
-      this.films = response;
+      this.lastFilms = this.FilmService.getLastFilms(response);
+      this.topFilms = this.FilmService.getTopFilms(response);
       this.isWating = false;
     });
   }

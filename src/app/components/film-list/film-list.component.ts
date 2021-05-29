@@ -18,6 +18,7 @@ export class FilmListComponent implements OnInit {
   ngOnInit(): void {
     let observable: Observable<any> = this.FilmService.getFilms();
     observable.subscribe((response) => {
+      console.log(response);
       this.films = response;
       this.showedFilms = response;
       this.isWaiting = false;

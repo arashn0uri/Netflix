@@ -1,0 +1,171 @@
+<div class="container">
+  <div
+    class="m-auto text-center text-info pt-3 font-weight-bold"
+    style="font-size: 2rem"
+  >
+    ADD NEW FILM
+  </div>
+  <hr class="text-info" />
+  <div class="row">
+    <div class="col-md-4">
+      <img
+        [src]="
+          film.cover_url ||
+          'https://raw.githubusercontent.com/julien-gargot/images-placeholder/master/placeholder-portrait.png'
+        "
+        alt=""
+        srcset=""
+        class="img-thumbnail mb-3 rounded"
+      />
+    </div>
+    <form class="col-md-8">
+      <div class="form-group row">
+        <label for="title" class="col-sm-2 col-form-label">Title</label>
+        <div class="col-sm-10">
+          <input
+            type="text"
+            class="form-control"
+            id="title"
+            [(ngModel)]="film.title"
+            name="title"
+            placeholder="es. Inception"
+          />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="director" class="col-sm-2 col-form-label">Director</label>
+        <div class="col-sm-10">
+          <input
+            type="text"
+            class="form-control"
+            id="director"
+            [(ngModel)]="film.director"
+            name="director"
+            placeholder="es. Martin Scorsese"
+          />
+        </div>
+      </div>
+      <div class="form-group row position-relative">
+        <label for="duration" class="col-sm-2 col-form-label"
+          >Film duration</label
+        >
+        <div class="col-sm-10">
+          <input
+            type="time"
+            class="form-control"
+            id="duration"
+            [(ngModel)]="film.duration"
+            name="duration"
+          />
+        </div>
+        <span class="badge badge-secondary">es. 01:29:50</span>
+      </div>
+      <div class="form-group row position-relative">
+        <label for="release_year" class="col-sm-2 col-form-label"
+          >Release Year</label
+        >
+        <div class="col-sm-10">
+          <input
+            type="number"
+            class="form-control"
+            id="release_year"
+            [(ngModel)]="film.release_year"
+            name="release_year"
+          />
+        </div>
+        <span class="badge badge-secondary">es. 1999</span>
+      </div>
+      <div class="form-group row position-relative">
+        <label for="stars" class="col-sm-2 col-form-label">Film stars</label>
+        <div class="col-sm-10">
+          <input
+            type="number"
+            min="0"
+            max="5"
+            class="form-control"
+            id="stars"
+            [(ngModel)]="film.stars"
+            name="stars"
+          />
+        </div>
+        <span class="badge badge-secondary badgeStars">from 0 to 5</span>
+      </div>
+      <div class="form-group row">
+        <label for="cover_url" class="col-sm-2 col-form-label">cover</label>
+        <div class="col-sm-10">
+          <input
+            type="text"
+            class="form-control"
+            id="cover_url"
+            [(ngModel)]="film.cover_url"
+            name="cover_url"
+            placeholder="Put the link of film's cover here..."
+          />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="description" class="col-sm-2 col-form-label"
+          >Film description</label
+        >
+        <div class="col-sm-10">
+          <textarea
+            type="password"
+            class="form-control"
+            id="description"
+            [(ngModel)]="film.description"
+            name="description"
+            placeholder="Write description of the film here..."
+          ></textarea>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="actors" class="col-sm-2 col-form-label">Actors</label>
+        <div class="col-sm-10 d-flex flex-wrap">
+          <span
+            *ngFor="let actor of actors"
+            class="border rounded d-inline-block label m-1"
+            [ngClass]="actor.selected ? 'btn-dark' : 'btn-outline-dark'"
+            (click)="actorSelectHandler(actor.id)"
+            [attr.id]="actor.id"
+          >
+            {{ actor.firstname }} {{ actor.lastname }}
+          </span>
+        </div>
+      </div>
+      <div class="form-group row position-relative">
+        <label for="vote" class="col-sm-2 col-form-label">Your vote</label>
+        <div class="col-sm-10">
+          <input
+            type="text"
+            class="form-control"
+            id="vote"
+            [(ngModel)]="film.vote"
+            name="vote"
+          />
+        </div>
+        <span class="badge badge-secondary badgeStars">from 0 to 5</span>
+      </div>
+      <div class="form-group row">
+        <label for="genres" class="col-sm-2 col-form-label">Genres</label>
+        <div class="col-sm-10 d-flex flex-wrap">
+          <span
+            *ngFor="let genre of genres"
+            class="border rounded d-inline-block label m-1"
+            [ngClass]="genre.selected ? 'btn-dark' : 'btn-outline-dark'"
+            (click)="genreSelectHandler(genre.name)"
+            [attr.id]="genre.name"
+          >
+            {{ genre.name }}
+          </span>
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-sm-10">
+          <button type="submit" class="btn btn-primary" (click)="add()">
+            Add
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,1 +1,69 @@
-<p>add-genre works!</p>
+<div class="container">
+  <div
+    class="m-auto text-center text-info pt-3 font-weight-bold position-relative"
+    style="font-size: 2rem"
+  >
+    <a
+      (click)="goBack()"
+      class="btn button-transparent text-danger position-absolute"
+      style="top: 1%; left: 1%"
+    >
+      < go back
+    </a>
+    ADD OR EDIT NEW GENRE
+  </div>
+  <hr class="text-info" />
+  <div class="row">
+    <div class="col-md-4">
+      <img
+        [src]="
+          genre.image_url ||
+          'https://raw.githubusercontent.com/julien-gargot/images-placeholder/master/placeholder-portrait.png'
+        "
+        alt=""
+        srcset=""
+        class="img-thumbnail mb-3 rounded"
+      />
+    </div>
+    <form class="col-md-8">
+      <div class="form-group row">
+        <label for="name" class="col-sm-2 col-form-label">name</label>
+        <div class="col-sm-10">
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            [(ngModel)]="genre.name"
+            name="name"
+            placeholder="es. Comedy"
+          />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="image_url" class="col-sm-2 col-form-label">Image</label>
+        <div class="col-sm-10">
+          <input
+            type="text"
+            class="form-control"
+            id="image_url"
+            [(ngModel)]="genre.image_url"
+            name="image_url"
+            placeholder="Put the link of genre's image here..."
+          />
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-sm-2">
+          <button type="submit" class="btn btn-primary" (click)="add()">
+            Add
+          </button>
+        </div>
+        <div class="col-sm-2">
+          <button type="submit" class="btn btn-primary" (click)="edit()">
+            Edit
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

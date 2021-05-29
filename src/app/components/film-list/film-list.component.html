@@ -22,9 +22,18 @@
           [alt]="film.title"
           [title]="film.description"
         />
-        <div class="card-body">
+        <div class="card-body position-relative">
           <h5 class="card-title">{{ film.title }}</h5>
           <p class="card-text">{{ film.description }}</p>
+          <a
+            *ngIf="
+              userService.loggedUser &&
+              film.created_by === userService.loggedUser.id
+            "
+            class="badge badge-warning rounded"
+            [routerLink]="['/edit-film', film.title]"
+            >Edit</a
+          >
         </div>
         <div class="card-footer bg-light">
           <button

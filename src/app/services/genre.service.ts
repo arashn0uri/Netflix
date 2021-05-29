@@ -1,21 +1,94 @@
 import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { Genre } from '../models/genre';
+import { UserService } from './user.service';
+import { catchError, tap } from 'rxjs/operators';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class GenreService {
-
-  private filmUrl = 'https://netflix.cristiancarrino.com/genre/read.php';
+  private host = 'https://netflix.cristiancarrino.com';
+  genres: Genre[] | null = null;
   httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
   };
-  constructor(
-    private http: HttpClient
-  ) { }
+  constructor(private http: HttpClient, private userService: UserService) {}
 
   getGenres(): Observable<any> {
-    return this.http.get(this.filmUrl, this.httpOptions);
-  };
+    return this.http.get(this.host + '/genre/read.php', this.httpOptions);
+  }
+
+  addGenre(genre: Genre): Observable<any> {
+    let loggedUser = this.userService.getLoggedUser();
+
+    if (!loggedUser) {
+      alert('Please login before');
+      return of(false);
+    }
+
+    let httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: loggedUser.token,
+      }),
+    };
+
+    console.log('Adding genre:', genre);
+    return this.http
+      .post<any>(this.host + '/genre/create.php', genre, httpOptions)
+      .pipe(
+        tap((response) => {
+          if (response.success) {
+            if (this.genres) {
+              genre.id = response.id;
+              this.genres.push(genre);
+            } else {
+              this.getGenres().subscribe();
+            }
+          }
+        }),
+        catchError((error) => {
+          alert(error.status + ': ' + error.error);
+          return of(false);
+        })
+      );
+  }
+
+  editGenre(genre: Genre): Observable<any> {
+    let loggedUser = this.userService.getLoggedUser();
+
+    if (!loggedUser) {
+      alert('Please login before');
+      return of(false);
+    }
+
+    let httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: loggedUser.token,
+      }),
+    };
+
+    console.log('Adding genre:', genre);
+    return this.http
+      .post<any>(this.host + '/genre/update.php', genre, httpOptions)
+      .pipe(
+        tap((response) => {
+          if (response.success) {
+            if (this.genres) {
+              let genreToEdit = this.genres.find((x) => x.id == genre.id);
+              genreToEdit = genre;
+            } else {
+              this.getGenres().subscribe();
+            }
+          }
+        }),
+        catchError((error) => {
+          alert(error.status + ': ' + error.error);
+          return of(false);
+        })
+      );
+  }
 }

@@ -1,8 +1,15 @@
 <div class="container">
   <div
-    class="m-auto text-center text-info pt-3 font-weight-bold"
+    class="m-auto text-center text-info pt-3 font-weight-bold position-relative"
     style="font-size: 2rem"
   >
+    <a
+      (click)="goBack()"
+      class="btn button-transparent text-danger position-absolute"
+      style="top: 1%; left: 1%"
+    >
+      < go back
+    </a>
     ADD NEW ACTOR
   </div>
   <hr class="text-info" />
@@ -60,24 +67,30 @@
           />
         </div>
       </div>
-      <div class="form-group row">
+      <div class="form-group row position-relative">
         <label for="birthdate" class="col-sm-2 col-form-label"
           >Date of birth</label
         >
         <div class="col-sm-10">
           <input
-            type="date"
+            type="text"
             class="form-control"
             id="birthdate"
             [(ngModel)]="actor.birthdate"
             name="birthdate"
           />
         </div>
+        <span class="badge badge-secondary">es. 1990:03:30 (YYYY-MM-DD)</span>
       </div>
       <div class="form-group row">
-        <div class="col-sm-10">
+        <div class="col-sm-2">
           <button type="submit" class="btn btn-primary" (click)="add()">
             Add
+          </button>
+        </div>
+        <div class="col-sm-2">
+          <button type="submit" class="btn btn-primary" (click)="edit()">
+            edit
           </button>
         </div>
       </div>

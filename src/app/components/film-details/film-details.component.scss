@@ -6,9 +6,15 @@
 }
 
 img {
-  transition: 0.5s ease;
+  transition: all 0.2s ease;
 }
 
 img:hover {
-  transform: scale(1.1);
+  transform: scale(0.97);
+}
+
+.badge {
+  position: absolute;
+  bottom: 2%;
+  right: 2%;
 }

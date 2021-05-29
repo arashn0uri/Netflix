@@ -5,7 +5,7 @@ export interface Film {
   description: string;
   plot: string;
   director: string;
-  duration: Time;
+  duration: string;
   release_year: number;
   cover_url: string;
   tags: string;

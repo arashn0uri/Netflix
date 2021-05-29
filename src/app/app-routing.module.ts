@@ -9,8 +9,8 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { AddFilmComponent } from './components/add-film/add-film.component';
 import { ActorsComponent } from './components/actors/actors.component';
 import { GenresComponent } from './components/genres/genres.component';
-import { AddActorComponent } from './components/add-actor/add-actor.component';
 import { AddGenreComponent } from './components/add-genre/add-genre.component';
+import { ActorManagerComponent } from './components/actor-manager/actor-manager.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -24,8 +24,11 @@ const routes: Routes = [
   { path: 'actors', component: ActorsComponent },
   { path: 'genres', component: GenresComponent },
   { path: 'add-film', component: AddFilmComponent },
-  { path: 'add-actor', component: AddActorComponent },
+  { path: 'add-actor', component: ActorManagerComponent },
   { path: 'add-genre', component: AddGenreComponent },
+  { path: 'edit-film/:filmTitle', component: AddFilmComponent },
+  { path: 'edit-actor/:actorName', component: ActorManagerComponent },
+  { path: 'edit-genre/:genre', component: AddGenreComponent },
 ];
 
 @NgModule({

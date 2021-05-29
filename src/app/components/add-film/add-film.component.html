@@ -1,8 +1,15 @@
 <div class="container">
   <div
-    class="m-auto text-center text-info pt-3 font-weight-bold"
+    class="m-auto text-center text-info pt-3 font-weight-bold position-relative"
     style="font-size: 2rem"
   >
+    <a
+      (click)="goBack()"
+      class="btn button-transparent text-danger position-absolute"
+      style="top: 1%; left: 1%"
+    >
+      < go back
+    </a>
     ADD NEW FILM
   </div>
   <hr class="text-info" />
@@ -51,7 +58,7 @@
         >
         <div class="col-sm-10">
           <input
-            type="time"
+            type="text"
             class="form-control"
             id="duration"
             [(ngModel)]="film.duration"
@@ -160,9 +167,14 @@
         </div>
       </div>
       <div class="form-group row">
-        <div class="col-sm-10">
+        <div class="col-sm-2">
           <button type="submit" class="btn btn-primary" (click)="add()">
             Add
+          </button>
+        </div>
+        <div>
+          <button type="submit" class="btn btn-primary" (click)="edit()">
+            Edit
           </button>
         </div>
       </div>

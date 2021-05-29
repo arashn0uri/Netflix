@@ -5,7 +5,7 @@ import { FilmService } from '../../services/film.service';
 import { faStar as fullStar } from '@fortawesome/free-solid-svg-icons';
 import { faStarHalfAlt as halfStar } from '@fortawesome/free-solid-svg-icons';
 import { faStar as BlankStar } from '@fortawesome/free-regular-svg-icons';
-import { Film } from 'src/app/models/film';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-film-details',
@@ -20,8 +20,9 @@ export class FilmDetailsComponent implements OnInit {
 
   constructor(
     private filmService: FilmService,
-    private route: ActivatedRoute
-  ) { }
+    private route: ActivatedRoute,
+    public userService: UserService
+  ) {}
 
   ngOnInit(): void {
     const routeParams = this.route.snapshot.paramMap;

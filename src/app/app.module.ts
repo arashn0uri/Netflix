@@ -18,7 +18,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { AddFilmComponent } from './components/add-film/add-film.component';
 import { ActorsComponent } from './components/actors/actors.component';
 import { GenresComponent } from './components/genres/genres.component';
-import { AddActorComponent } from './components/add-actor/add-actor.component';
+import { ActorManagerComponent } from './components/actor-manager/actor-manager.component';
 import { AddGenreComponent } from './components/add-genre/add-genre.component';
 
 @NgModule({
@@ -35,7 +35,7 @@ import { AddGenreComponent } from './components/add-genre/add-genre.component';
     AddFilmComponent,
     ActorsComponent,
     GenresComponent,
-    AddActorComponent,
+    ActorManagerComponent,
     AddGenreComponent,
   ],
   imports: [

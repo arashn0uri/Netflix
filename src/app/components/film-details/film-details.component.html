@@ -1,6 +1,6 @@
 <div class="container h-50">
   <div class="row">
-    <div class="col-md-6 mt-4  order-md-1">
+    <div class="col-md-6 mt-4 order-md-1">
       <img
         [src]="film.cover_url"
         class="card-img-top"
@@ -10,7 +10,7 @@
     </div>
     <div class="col-md-6 mt-4 pb-5">
       <div class="card text-center">
-        <div class="card-body">
+        <div class="card-body position-relative">
           <h4 class="card-title"><strong>Title: </strong>{{ film.title }}</h4>
           <h5><strong>Director: </strong> {{ film.director }}</h5>
           <h6><strong>Vote: </strong> {{ film.vote }}</h6>
@@ -42,6 +42,15 @@
           <div class="text-primary">
             <span *ngFor="let genre of film.genres">#{{ genre.name }}</span>
           </div>
+          <a
+            *ngIf="
+              userService.loggedUser &&
+              film.created_by === userService.loggedUser.id
+            "
+            class="badge badge-warning rounded"
+            [routerLink]="['/edit-film', film.title]"
+            >Edit</a
+          >
         </div>
         <div class="card-footer bg-light">
           <button class="btn btn-outline-dark" routerLink="/films">

@@ -12,15 +12,13 @@ import { catchError, tap } from 'rxjs/operators';
 export class FilmService {
   private host = 'https://netflix.cristiancarrino.com';
   films: Film[] | null = null;
-
-  private filmUrl = 'https://netflix.cristiancarrino.com/film/read.php';
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
   };
   constructor(private http: HttpClient, private userService: UserService) {}
 
   getFilms(): Observable<Film> {
-    return this.http.get<Film>(this.filmUrl, this.httpOptions);
+    return this.http.get<Film>(this.host + '/film/read.php', this.httpOptions);
   }
 
   addFilm(film: Film): Observable<any> {
@@ -59,12 +57,45 @@ export class FilmService {
       );
   }
 
-  editFilm(): Observable<Film> {
-    return this.http.get<Film>(this.filmUrl, this.httpOptions);
+  removeFilm(): Observable<Film> {
+    return this.http.get<Film>(this.host, this.httpOptions);
   }
 
-  removeFilm(): Observable<Film> {
-    return this.http.get<Film>(this.filmUrl, this.httpOptions);
+  editFilm(film: Film): Observable<any> {
+    let loggedUser = this.userService.getLoggedUser();
+
+    if (!loggedUser) {
+      alert('Please login before');
+      return of(false);
+    }
+
+    let httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: loggedUser.token,
+      }),
+    };
+
+    console.log('Editing film:', film);
+    return this.http
+      .post<any>(this.host + '/film/update.php', film, httpOptions)
+      .pipe(
+        tap((response) => {
+          console.log(response);
+          if (response.success) {
+            if (this.films) {
+              let filmToEdit = this.films.find((x) => x.id == film.id);
+              filmToEdit = film;
+            } else {
+              this.getFilms().subscribe();
+            }
+          }
+        }),
+        catchError((error) => {
+          alert(error.status + ': ' + error.error);
+          return of(false);
+        })
+      );
   }
 
   getLastFilms(films: Film[]): Film[] {

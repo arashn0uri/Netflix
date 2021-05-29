@@ -3,6 +3,8 @@ import { Observable } from 'rxjs';
 import { faFilm } from '@fortawesome/free-solid-svg-icons';
 import { GenreService } from 'src/app/services/genre.service';
 import { UserService } from 'src/app/services/user.service';
+import { Genre } from 'src/app/models/genre';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-genres',
@@ -15,7 +17,8 @@ export class GenresComponent implements OnInit {
   genres: any[] = [];
   constructor(
     private genreService: GenreService,
-    public userService: UserService
+    public userService: UserService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -24,6 +27,16 @@ export class GenresComponent implements OnInit {
       console.log(response);
       this.genres = response;
       this.isWating = false;
+    });
+  }
+
+  delete(genre: Genre) {
+    this.genreService.deleteGenre(genre).subscribe((response) => {
+      if (response !== null) {
+        this.router.navigate(['/dashboard']);
+      } else {
+        alert('deleting genre failed. try again after one minute, please!');
+      }
     });
   }
 }

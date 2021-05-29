@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FilmService } from '../../services/film.service';
 import { faStar as fullStar } from '@fortawesome/free-solid-svg-icons';
 import { faStarHalfAlt as halfStar } from '@fortawesome/free-solid-svg-icons';
-import { faStar as BlankStar } from '@fortawesome/free-regular-svg-icons';
+import { faStar as blankStar } from '@fortawesome/free-regular-svg-icons';
 import { UserService } from 'src/app/services/user.service';
+import { Film } from 'src/app/models/film';
 
 @Component({
   selector: 'app-film-details',
@@ -15,13 +16,15 @@ import { UserService } from 'src/app/services/user.service';
 export class FilmDetailsComponent implements OnInit {
   fullStar = fullStar;
   halfStar = halfStar;
-  blankStar = BlankStar;
+  blankStar = blankStar;
+  isWaiting: boolean = true;
   film: any = {};
 
   constructor(
     private filmService: FilmService,
     private route: ActivatedRoute,
-    public userService: UserService
+    public userService: UserService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -32,6 +35,7 @@ export class FilmDetailsComponent implements OnInit {
       this.film = response.find(
         (film: { title: string }) => film.title == filmIdFromRoute
       );
+      this.isWaiting = false;
     });
   }
   createRangeForStar(number: number, color: string) {
@@ -49,5 +53,15 @@ export class FilmDetailsComponent implements OnInit {
       items.push(i);
     }
     return items;
+  }
+
+  delete(film: Film) {
+    this.filmService.deleteFilm(film).subscribe((response) => {
+      if (response !== null) {
+        this.router.navigate(['/films']);
+      } else {
+        alert('deleting film failed. try again after one minute, please!');
+      }
+    });
   }
 }

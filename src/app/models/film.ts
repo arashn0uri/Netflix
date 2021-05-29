@@ -11,7 +11,7 @@ export interface Film {
   tags: string;
   created_by: number;
   created_at?: Date;
-  stars: number;
+  stars?: any[];
   actors: any[];
   genres: any[];
   vote: number;

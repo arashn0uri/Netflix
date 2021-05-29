@@ -6,11 +6,11 @@ import { ResetPasswordComponent } from './components/reset-password/reset-passwo
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { FilmDetailsComponent } from './components/film-details/film-details.component';
 import { ProfileComponent } from './components/profile/profile.component';
-import { AddFilmComponent } from './components/add-film/add-film.component';
 import { ActorsComponent } from './components/actors/actors.component';
 import { GenresComponent } from './components/genres/genres.component';
-import { AddGenreComponent } from './components/add-genre/add-genre.component';
 import { ActorManagerComponent } from './components/actor-manager/actor-manager.component';
+import { FilmManagerComponent } from './components/Film-manager/film-manager.component';
+import { GenreManagerComponent } from './components/genre-manager/genre-manager.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -20,15 +20,15 @@ const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
   { path: 'filmDetails/:filmTitle', component: FilmDetailsComponent },
   { path: 'profile', component: ProfileComponent },
-  { path: 'add-film', component: AddFilmComponent },
+  { path: 'add-film', component: FilmManagerComponent },
   { path: 'actors', component: ActorsComponent },
   { path: 'genres', component: GenresComponent },
-  { path: 'add-film', component: AddFilmComponent },
+  { path: 'add-film', component: FilmManagerComponent },
+  { path: 'edit-film/:filmID', component: FilmManagerComponent },
   { path: 'add-actor', component: ActorManagerComponent },
-  { path: 'add-genre', component: AddGenreComponent },
-  { path: 'edit-film/:filmTitle', component: AddFilmComponent },
-  { path: 'edit-actor/:actorName', component: ActorManagerComponent },
-  { path: 'edit-genre/:genre', component: AddGenreComponent },
+  { path: 'edit-actor/:actorID', component: ActorManagerComponent },
+  { path: 'add-genre', component: GenreManagerComponent },
+  { path: 'edit-genre/:genreID', component: GenreManagerComponent },
 ];
 
 @NgModule({

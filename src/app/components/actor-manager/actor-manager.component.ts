@@ -1,6 +1,6 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Actor } from 'src/app/models/actor';
 import { ActorService } from 'src/app/services/actor.service';
@@ -11,6 +11,7 @@ import { ActorService } from 'src/app/services/actor.service';
   styleUrls: ['./actor-manager.component.scss'],
 })
 export class ActorManagerComponent implements OnInit {
+  disabled: boolean = false;
   actor: Actor = {
     id: 0,
     firstname: '',
@@ -21,17 +22,19 @@ export class ActorManagerComponent implements OnInit {
   constructor(
     private actorService: ActorService,
     private location: Location,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
     const routeParams = this.route.snapshot.paramMap;
-    const filmIdFromRoute = routeParams.get('actorName');
+    const filmIdFromRoute = routeParams.get('actorID');
     if (filmIdFromRoute) {
+      this.disabled = true;
       let observable: Observable<any> = this.actorService.getActors();
       observable.subscribe((response) => {
         this.actor = response.find(
-          (actor: { firstname: string }) => actor.firstname == filmIdFromRoute
+          (actor: { id: number }) => actor.id == Number(filmIdFromRoute)
         );
       });
     }
@@ -39,7 +42,6 @@ export class ActorManagerComponent implements OnInit {
 
   add() {
     this.actorService.addActor(this.actor).subscribe((response) => {
-      console.log(response);
       this.actor = {
         id: 0,
         firstname: '',
@@ -47,12 +49,16 @@ export class ActorManagerComponent implements OnInit {
         photo_url: '',
         birthdate: '',
       };
+      if (response !== null) {
+        this.router.navigate(['/actors']);
+      } else {
+        alert('adding actor failed. try again after one minute, please!');
+      }
     });
   }
 
   edit() {
     this.actorService.editActor(this.actor).subscribe((response) => {
-      console.log(response);
       this.actor = {
         id: 0,
         firstname: '',
@@ -60,6 +66,11 @@ export class ActorManagerComponent implements OnInit {
         photo_url: '',
         birthdate: '',
       };
+      if (response !== null) {
+        this.router.navigate(['/actors']);
+      } else {
+        alert('editing actor failed. try again after one minute, please!');
+      }
     });
   }
 

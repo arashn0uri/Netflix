@@ -5,7 +5,7 @@
       class="w-75 p-1 border rounded searchBox"
       placeholder="Search"
       [(ngModel)]="search"
-      (input)="change()"
+      (input)="searchHandler()"
     />
     <p class="text-secondary d-flex align-items-center m-0">OR</p>
     <a class="btn btn-outline-dark" routerLink="/add-film">Add a new movie</a>
@@ -30,8 +30,19 @@
               userService.loggedUser &&
               film.created_by === userService.loggedUser.id
             "
-            class="badge badge-warning rounded"
-            [routerLink]="['/edit-film', film.title]"
+            class="badge badge-danger rounded position-absolute"
+            style="bottom: 2%; left: 2%; cursor: pointer"
+            (click)="delete(film)"
+            >Delete</a
+          >
+          <a
+            *ngIf="
+              userService.loggedUser &&
+              film.created_by === userService.loggedUser.id
+            "
+            class="badge badge-warning rounded position-absolute"
+            style="bottom: 2%; right: 2%"
+            [routerLink]="['/edit-film', film.id]"
             >Edit</a
           >
         </div>

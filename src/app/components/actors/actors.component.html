@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="d-flex justify-content-center align-items-center mt-3">
+  <div class="d-flex justify-content-end align-items-center mt-3">
     <a class="btn btn-outline-dark" routerLink="/add-actor">Add an actor</a>
   </div>
   <div class="row row-cols-6">
@@ -19,20 +19,35 @@
           *ngIf="!actor.photo_url"
           [icon]="userCircle"
           size="6x"
+          class="mt-5"
         ></fa-icon>
         <div class="card-body justofy-content-between position-relative">
-          <h5 class="card-title">{{ actor.firstname }} {{ actor.lastname }}</h5>
+          <h5 class="card-title mt-2">
+            {{ actor.firstname }} {{ actor.lastname }}
+          </h5>
           <p class="card-text">{{ actor.birthdate }}</p>
           <a
             *ngIf="
               userService.loggedUser &&
               actor.created_by === userService.loggedUser.id
             "
+            class="badge badge-danger rounded position-absolute"
+            style="top: 2%; left: 5%; cursor: pointer"
+            (click)="delete(actor)"
+            >Delete</a
+          >
+          <a
+            *ngIf="
+              userService.loggedUser &&
+              actor.created_by === userService.loggedUser.id
+            "
             class="badge badge-warning rounded position-absolute"
-            style="top: 2%; left: 5%"
-            [routerLink]="['/edit-actor', actor.firstname]"
+            style="top: 2%; right: 5%"
+            [routerLink]="['/edit-actor', actor.id]"
             >Edit</a
           >
+        </div>
+        <div class="card-footer bg-transparent">
           <button class="btn btn-outline-dark">More details</button>
         </div>
       </div>

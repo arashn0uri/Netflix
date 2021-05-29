@@ -1,22 +1,35 @@
 <div class="container">
-  <div class="d-flex justify-content-center align-items-center mt-3">
+  <div class="d-flex justify-content-end align-items-center mt-3">
     <a class="btn btn-outline-primary" routerLink="/add-genre">Add a Genre</a>
   </div>
-  <div class="row mx-0 text-center justify-content-around">
+  <div class="row row-cols-6">
     <div
-      class="card my-3 p-0 mx-3 col-6 col-sm-4 col-md-3 col-lg-2 justify-content-between position-relative"
+      class="col-12 col-sm-6 col-md-4 col-lg-3 mt-4"
       *ngFor="let genre of genres"
     >
-      <fa-icon [icon]="film" size="6x"></fa-icon>
-      <h5 class="card-header">{{ genre.name }}</h5>
-      <a
-        *ngIf="userService.loggedUser && genre.id > 300"
-        class="badge badge-warning rounded position-absolute"
-        style="bottom: 42%; left: 5%"
-        [routerLink]="['/edit-genre', genre.name]"
-        >Edit</a
-      >
-      <a href="#" class="btn btn-outline-primary">Details</a>
+      <div class="card h-100 text-center">
+        <fa-icon [icon]="film" size="6x"></fa-icon>
+        <div class="card-body position-relative">
+          <h5>{{ genre.name }}</h5>
+          <a
+            *ngIf="userService.loggedUser && genre.id > 300"
+            class="badge badge-danger rounded position-absolute"
+            style="bottom: -12%; left: 5%; cursor: pointer"
+            (click)="delete(genre)"
+            >Delete</a
+          >
+          <a
+            *ngIf="userService.loggedUser && genre.id > 300"
+            class="badge badge-warning rounded position-absolute"
+            style="bottom: -12%; right: 5%"
+            [routerLink]="['/edit-genre', genre.id]"
+            >Edit</a
+          >
+        </div>
+        <div class="card-footer bg-transparent">
+          <a href="#" class="btn btn-outline-primary">Details</a>
+        </div>
+      </div>
     </div>
   </div>
   <div *ngIf="isWating">

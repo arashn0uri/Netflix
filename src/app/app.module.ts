@@ -15,11 +15,11 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { NgxLocalStorageModule } from 'ngx-localstorage';
 import { FilmDetailsComponent } from './components/film-details/film-details.component';
 import { ProfileComponent } from './components/profile/profile.component';
-import { AddFilmComponent } from './components/add-film/add-film.component';
+import { FilmManagerComponent } from './components/Film-manager/film-manager.component';
 import { ActorsComponent } from './components/actors/actors.component';
 import { GenresComponent } from './components/genres/genres.component';
 import { ActorManagerComponent } from './components/actor-manager/actor-manager.component';
-import { AddGenreComponent } from './components/add-genre/add-genre.component';
+import { GenreManagerComponent } from './components/genre-manager/genre-manager.component';
 
 @NgModule({
   declarations: [
@@ -32,11 +32,11 @@ import { AddGenreComponent } from './components/add-genre/add-genre.component';
     DashboardComponent,
     FilmDetailsComponent,
     ProfileComponent,
-    AddFilmComponent,
+    FilmManagerComponent,
     ActorsComponent,
     GenresComponent,
     ActorManagerComponent,
-    AddGenreComponent,
+    GenreManagerComponent,
   ],
   imports: [
     BrowserModule,

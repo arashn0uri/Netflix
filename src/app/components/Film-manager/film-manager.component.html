@@ -10,7 +10,7 @@
     >
       < go back
     </a>
-    ADD NEW FILM
+    MANAGE THE FILM - ADD OR EDIT
   </div>
   <hr class="text-info" />
   <div class="row">
@@ -166,14 +166,24 @@
           </span>
         </div>
       </div>
-      <div class="form-group row">
-        <div class="col-sm-2">
-          <button type="submit" class="btn btn-primary" (click)="add()">
+      <div class="form-group row justify-content-around">
+        <div class="col-sm-4">
+          <button
+            type="submit"
+            class="w-75 btn btn-info"
+            (click)="add()"
+            [disabled]="disabled"
+          >
             Add
           </button>
         </div>
-        <div>
-          <button type="submit" class="btn btn-primary" (click)="edit()">
+        <div class="col-sm-4">
+          <button
+            type="submit"
+            class="w-75 btn btn-warning"
+            (click)="edit()"
+            [disabled]="!disabled"
+          >
             Edit
           </button>
         </div>

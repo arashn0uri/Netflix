@@ -6,15 +6,16 @@ import { Observable } from 'rxjs';
 import { Actor } from 'src/app/models/actor';
 import { Genre } from 'src/app/models/genre';
 import { GenreService } from 'src/app/services/genre.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 
 @Component({
-  selector: 'app-add-film',
-  templateUrl: './add-film.component.html',
-  styleUrls: ['./add-film.component.scss'],
+  selector: 'app-film-manager',
+  templateUrl: './film-manager.component.html',
+  styleUrls: ['./film-manager.component.scss'],
 })
-export class AddFilmComponent implements OnInit {
+export class FilmManagerComponent implements OnInit {
+  disabled: Boolean = false;
   actors: Actor[] = [];
   genres: Genre[] = [];
   film: Film = {
@@ -28,7 +29,7 @@ export class AddFilmComponent implements OnInit {
     cover_url: '',
     tags: '',
     created_by: 0,
-    stars: 0,
+    stars: [],
     actors: [],
     genres: [],
     vote: 0,
@@ -38,6 +39,7 @@ export class AddFilmComponent implements OnInit {
     private actorService: ActorService,
     private genreService: GenreService,
     private route: ActivatedRoute,
+    private router: Router,
     private location: Location
   ) {}
 
@@ -59,12 +61,13 @@ export class AddFilmComponent implements OnInit {
       });
     });
     const routeParams = this.route.snapshot.paramMap;
-    const filmIdFromRoute = routeParams.get('filmTitle');
+    const filmIdFromRoute = routeParams.get('filmID');
     if (filmIdFromRoute) {
+      this.disabled = true;
       let observable: Observable<any> = this.filmService.getFilms();
       observable.subscribe((response) => {
         this.film = response.find(
-          (film: { title: string }) => film.title == filmIdFromRoute
+          (film: { id: number }) => film.id == Number(filmIdFromRoute)
         );
         this.film.genres.forEach((genre) => {
           this.genres.map((localGenre) => {
@@ -72,6 +75,14 @@ export class AddFilmComponent implements OnInit {
               localGenre.selected = true;
             }
             return localGenre;
+          });
+        });
+        this.film.actors.forEach((actor) => {
+          this.actors.map((localActor) => {
+            if (localActor.firstname === actor.firstname) {
+              localActor.selected = true;
+            }
+            return localActor;
           });
         });
       });
@@ -85,7 +96,6 @@ export class AddFilmComponent implements OnInit {
     this.film.tags = this.film.title;
     console.log(this.film);
     this.filmService.addFilm(this.film).subscribe((response) => {
-      console.log(response);
       this.film = {
         id: 0,
         title: '',
@@ -97,11 +107,16 @@ export class AddFilmComponent implements OnInit {
         cover_url: '',
         created_by: 0,
         tags: '',
-        stars: 0,
+        stars: [],
         actors: [],
         genres: [],
         vote: 0,
       };
+      if (response !== null) {
+        this.router.navigate(['/films']);
+      } else {
+        alert('adding film failed. try again after one minute, please!');
+      }
     });
   }
 
@@ -112,7 +127,6 @@ export class AddFilmComponent implements OnInit {
     this.film.tags = this.film.title;
     console.log(this.film);
     this.filmService.editFilm(this.film).subscribe((response) => {
-      console.log(response);
       this.film = {
         id: 0,
         title: '',
@@ -124,11 +138,16 @@ export class AddFilmComponent implements OnInit {
         cover_url: '',
         created_by: 0,
         tags: '',
-        stars: 0,
+        stars: [],
         actors: [],
         genres: [],
         vote: 0,
       };
+      if (response !== null) {
+        this.router.navigate(['/films']);
+      } else {
+        alert('editing film failed. try again after one minute, please!');
+      }
     });
   }
 

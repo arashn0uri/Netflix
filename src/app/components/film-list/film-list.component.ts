@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Film } from 'src/app/models/film';
 import { UserService } from 'src/app/services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-film-list',
@@ -15,12 +16,13 @@ export class FilmListComponent implements OnInit {
   films: Film[] = [];
   showedFilms: Film[] = this.films;
   constructor(
-    private FilmService: FilmService,
-    public userService: UserService
+    private filmService: FilmService,
+    public userService: UserService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
-    let observable: Observable<any> = this.FilmService.getFilms();
+    let observable: Observable<any> = this.filmService.getFilms();
     observable.subscribe((response) => {
       console.log(response);
       this.films = response;
@@ -29,9 +31,19 @@ export class FilmListComponent implements OnInit {
     });
   }
 
-  change() {
+  searchHandler() {
     this.showedFilms = this.films.filter((film) => {
       return film.title.toLowerCase().includes(this.search.toLowerCase());
+    });
+  }
+
+  delete(film: Film) {
+    this.filmService.deleteFilm(film).subscribe((response) => {
+      if (response !== null) {
+        this.router.navigate(['/dashboard']);
+      } else {
+        alert('deleting film failed. try again after one minute, please!');
+      }
     });
   }
 }

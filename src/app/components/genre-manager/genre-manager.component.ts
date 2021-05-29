@@ -1,16 +1,17 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Genre } from 'src/app/models/genre';
 import { GenreService } from 'src/app/services/genre.service';
 
 @Component({
-  selector: 'app-add-genre',
-  templateUrl: './add-genre.component.html',
-  styleUrls: ['./add-genre.component.scss'],
+  selector: 'app-genre-manager',
+  templateUrl: './genre-manager.component.html',
+  styleUrls: ['./genre-manager.component.scss'],
 })
-export class AddGenreComponent implements OnInit {
+export class GenreManagerComponent implements OnInit {
+  disabled: boolean = false;
   genre: Genre = {
     name: '',
     image_url: '',
@@ -18,17 +19,19 @@ export class AddGenreComponent implements OnInit {
   constructor(
     private genreService: GenreService,
     private route: ActivatedRoute,
+    private router: Router,
     private location: Location
   ) {}
 
   ngOnInit(): void {
     const routeParams = this.route.snapshot.paramMap;
-    const filmIdFromRoute = routeParams.get('genre');
+    const filmIdFromRoute = routeParams.get('genreID');
     if (filmIdFromRoute) {
+      this.disabled = true;
       let observable: Observable<any> = this.genreService.getGenres();
       observable.subscribe((response) => {
         this.genre = response.find(
-          (genre: { name: string }) => genre.name == filmIdFromRoute
+          (genre: { id: number }) => genre.id == Number(filmIdFromRoute)
         );
       });
     }
@@ -36,23 +39,31 @@ export class AddGenreComponent implements OnInit {
 
   add() {
     this.genreService.addGenre(this.genre).subscribe((response) => {
-      console.log(response);
       this.genre = {
         id: 0,
         name: '',
         image_url: '',
       };
+      if (response !== null) {
+        this.router.navigate(['/genres']);
+      } else {
+        alert('adding genre failed. try again after one minute, please!');
+      }
     });
   }
 
   edit() {
     this.genreService.editGenre(this.genre).subscribe((response) => {
-      console.log(response);
       this.genre = {
         id: 0,
         name: '',
         image_url: '',
       };
+      if (response !== null) {
+        this.router.navigate(['/genres']);
+      } else {
+        alert('editing genre failed. try again after one minute, please!');
+      }
     });
   }
 

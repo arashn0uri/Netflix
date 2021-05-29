@@ -91,4 +91,39 @@ export class ActorService {
         })
       );
   }
+
+  deleteActor(actor: Actor): Observable<any> {
+    let loggedUser = this.userService.getLoggedUser();
+
+    if (!loggedUser) {
+      alert('Please login before');
+      return of(false);
+    }
+
+    let httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: loggedUser.token,
+      }),
+    };
+
+    console.log('deleting actor:', actor);
+    return this.http
+      .post<any>(this.host + '/actor/delete.php', { id: actor.id }, httpOptions)
+      .pipe(
+        tap((response) => {
+          if (response.success) {
+            if (this.actors) {
+              this.actors = this.actors.filter((x) => x.id != actor.id);
+            } else {
+              this.getActors().subscribe();
+            }
+          }
+        }),
+        catchError((error) => {
+          alert(error.status + ': ' + error.error);
+          return of(false);
+        })
+      );
+  }
 }

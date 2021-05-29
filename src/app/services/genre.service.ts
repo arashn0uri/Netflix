@@ -91,4 +91,39 @@ export class GenreService {
         })
       );
   }
+
+  deleteGenre(genre: Genre): Observable<any> {
+    let loggedUser = this.userService.getLoggedUser();
+
+    if (!loggedUser) {
+      alert('Please login before');
+      return of(false);
+    }
+
+    let httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: loggedUser.token,
+      }),
+    };
+
+    console.log('deleting genre:', genre);
+    return this.http
+      .post<any>(this.host + '/genre/delete.php', { id: genre.id }, httpOptions)
+      .pipe(
+        tap((response) => {
+          if (response.success) {
+            if (this.genres) {
+              this.genres = this.genres.filter((x) => x.id != genre.id);
+            } else {
+              this.getGenres().subscribe();
+            }
+          }
+        }),
+        catchError((error) => {
+          alert(error.status + ': ' + error.error);
+          return of(false);
+        })
+      );
+  }
 }

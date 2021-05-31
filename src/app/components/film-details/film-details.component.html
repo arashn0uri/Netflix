@@ -1,4 +1,4 @@
-<div class="container h-50">
+<div class="container h-50" *ngIf="!isWaiting">
   <div class="row" *ngIf="!isWaiting">
     <div class="col-md-6 mt-4 order-md-1">
       <img
@@ -42,36 +42,26 @@
           <div class="text-primary">
             <span *ngFor="let genre of film.genres">#{{ genre.name }}</span>
           </div>
-          <a
-            *ngIf="
-              userService.loggedUser &&
-              film.created_by === userService.loggedUser.id
-            "
-            class="badge badge-danger rounded position-absolute"
-            style="bottom: 2%; left: 2%; cursor: pointer"
-            (click)="delete(film)"
-            >Delete</a
-          >
-          <a
-            *ngIf="
-              userService.loggedUser &&
-              film.created_by === userService.loggedUser.id
-            "
-            class="badge badge-warning rounded position-absolute"
-            style="bottom: 2%; right: 2%; cursor: pointer"
-            [routerLink]="['/edit-film', film.id]"
-            >Edit</a
-          >
+          <app-modifier-button
+            [show]="show"
+            (remove)="delete(film)"
+            [label]="['Delete']"
+          ></app-modifier-button>
+          <app-modifier-button
+            [show]="show"
+            [link]="['/edit-film', film.id]"
+            [label]="['Edit']"
+          ></app-modifier-button>
         </div>
         <div class="card-footer bg-light">
-          <button class="btn btn-outline-dark" routerLink="/films">
+          <button class="btn btn-outline-dark" (click)="goBack()">
             Go back
           </button>
         </div>
       </div>
     </div>
   </div>
-  <div *ngIf="isWaiting">
-    <div class="loader"></div>
-  </div>
+</div>
+<div *ngIf="isWaiting" class="modal">
+  <div class="loader"></div>
 </div>

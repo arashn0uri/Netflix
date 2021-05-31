@@ -33,6 +33,7 @@ export class FilmManagerComponent implements OnInit {
     actors: [],
     genres: [],
     vote: 0,
+    starRating: 0,
   };
   constructor(
     private filmService: FilmService,
@@ -111,6 +112,7 @@ export class FilmManagerComponent implements OnInit {
         actors: [],
         genres: [],
         vote: 0,
+        starRating: 0,
       };
       if (response !== null) {
         this.router.navigate(['/films']);
@@ -142,6 +144,7 @@ export class FilmManagerComponent implements OnInit {
         actors: [],
         genres: [],
         vote: 0,
+        starRating: 0,
       };
       if (response !== null) {
         this.router.navigate(['/films']);

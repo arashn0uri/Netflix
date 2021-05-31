@@ -7,42 +7,51 @@ import { LocalStorageService } from 'ngx-localstorage';
 import { User } from '../models/user';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UserService {
   private loginUrl = 'https://netflix.cristiancarrino.com/user/login.php';
   httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
   };
   loggedUser: User | null = null;
   constructor(
     private http: HttpClient,
     private storageService: LocalStorageService
-  ) { }
+  ) {}
 
-
-  login(username: string, password: string, rememberMe: boolean): Observable<User | null> {
-    return this.http.post<User | null>(this.loginUrl, { username: username, password: password }, this.httpOptions)
+  login(
+    username: string,
+    password: string,
+    rememberMe: boolean
+  ): Observable<User | null> {
+    return this.http
+      .post<User | null>(
+        this.loginUrl,
+        { username: username, password: password },
+        this.httpOptions
+      )
       .pipe(
-        tap(response => {
+        tap((response) => {
           this.loggedUser = response;
-          if (rememberMe) this.storageService.set("loggedUser", this.loggedUser);
+          if (rememberMe)
+            this.storageService.set('loggedUser', this.loggedUser);
         }),
-        catchError(error => {
+        catchError((error) => {
           console.log(error);
-          this.logeedOut();
+          this.loggedOut();
           return of(null);
         })
       );
   }
 
   getLoggedUser(): User | null {
-    this.loggedUser = this.storageService.get("loggedUser");
+    this.loggedUser = this.storageService.get('loggedUser');
     return this.loggedUser;
   }
 
-  logeedOut(): User | null {
-    this.storageService.remove("loggedUser");
-    return this.loggedUser = null;
+  loggedOut(): User | null {
+    this.storageService.remove('loggedUser');
+    return (this.loggedUser = null);
   }
 }

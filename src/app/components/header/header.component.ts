@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
+import { HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -15,6 +16,15 @@ export class HeaderComponent implements OnInit {
   }
 
   loggedOut(): void {
-    this.user = this.userService.logeedOut();
+    this.user = this.userService.loggedOut();
+  }
+  @HostListener('window:scroll', ['$event'])
+  onWindowScroll() {
+    let element = document.querySelector('.header') as HTMLElement;
+    if (window.pageYOffset > element.clientHeight) {
+      element.classList.add('dark');
+    } else {
+      element.classList.remove('dark');
+    }
   }
 }

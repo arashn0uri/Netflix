@@ -20,6 +20,8 @@ import { ActorsComponent } from './components/actors/actors.component';
 import { GenresComponent } from './components/genres/genres.component';
 import { ActorManagerComponent } from './components/actor-manager/actor-manager.component';
 import { GenreManagerComponent } from './components/genre-manager/genre-manager.component';
+import { ModifierButtonComponent } from './components/modifier-button/modifier-button.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -37,6 +39,7 @@ import { GenreManagerComponent } from './components/genre-manager/genre-manager.
     GenresComponent,
     ActorManagerComponent,
     GenreManagerComponent,
+    ModifierButtonComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,6 +48,7 @@ import { GenreManagerComponent } from './components/genre-manager/genre-manager.
     HttpClientModule,
     FormsModule,
     NgxLocalStorageModule.forRoot(),
+    NgbModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -6,21 +6,18 @@ import { User } from 'src/app/models/user';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.scss']
+  styleUrls: ['./profile.component.scss'],
 })
 export class ProfileComponent implements OnInit {
   user: User | null = null;
   profile = faUserCircle;
-  constructor(
-    public userService: UserService
-  ) { }
+  constructor(public userService: UserService) {}
 
   ngOnInit(): void {
     this.user = this.userService.getLoggedUser();
   }
 
   loggedOut(): void {
-    this.user = this.userService.logeedOut();
+    this.user = this.userService.loggedOut();
   }
-
 }

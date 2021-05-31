@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" *ngIf="!isWaiting">
   <div class="searchAdd">
     <input
       type="text"
@@ -24,27 +24,17 @@
         />
         <div class="card-body position-relative">
           <h5 class="card-title">{{ film.title }}</h5>
-          <p class="card-text">{{ film.description }}</p>
-          <a
-            *ngIf="
-              userService.loggedUser &&
-              film.created_by === userService.loggedUser.id
-            "
-            class="badge badge-danger rounded position-absolute"
-            style="bottom: 2%; left: 2%; cursor: pointer"
-            (click)="delete(film)"
-            >Delete</a
-          >
-          <a
-            *ngIf="
-              userService.loggedUser &&
-              film.created_by === userService.loggedUser.id
-            "
-            class="badge badge-warning rounded position-absolute"
-            style="bottom: 2%; right: 2%"
-            [routerLink]="['/edit-film', film.id]"
-            >Edit</a
-          >
+          <p class="card-text text-justify">{{ film.description }}</p>
+          <app-modifier-button
+            [show]="userID && film.created_by === userID ? true : false"
+            (remove)="delete(film)"
+            [label]="['Delete']"
+          ></app-modifier-button>
+          <app-modifier-button
+            [show]="userID && film.created_by === userID ? true : false"
+            [link]="['/edit-film', film.id]"
+            [label]="['Edit']"
+          ></app-modifier-button>
         </div>
         <div class="card-footer bg-light">
           <button
@@ -57,7 +47,8 @@
       </div>
     </div>
   </div>
-  <div *ngIf="isWaiting">
-    <div class="loader"></div>
-  </div>
+</div>
+
+<div *ngIf="isWaiting" class="modal">
+  <div class="loader"></div>
 </div>

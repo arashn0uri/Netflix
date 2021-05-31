@@ -4,3 +4,19 @@
 .iconSilverColor {
   color: silver;
 }
+
+.star {
+  position: relative;
+  display: inline-block;
+  font-size: 20px;
+  color: #d3d3d3;
+}
+.full {
+  color: #ffc107;
+}
+.half {
+  position: absolute;
+  display: inline-block;
+  overflow: hidden;
+  color: #ffc107;
+}

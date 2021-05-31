@@ -1,131 +1,127 @@
-<div class="container">
-  <div
-    class="m-auto text-center text-dark pt-3 font-weight-bold"
-    style="font-size: 2rem"
-  >
-    Last Films
-  </div>
-  <div class="row row-cols-6">
+<div class="container" *ngIf="!isWaiting">
+  <div>
     <div
-      class="col-12 col-sm-6 col-md-4 col-lg-3 mt-4"
-      *ngFor="let film of lastFilms"
+      class="m-auto text-center text-dark pt-3 font-weight-bold"
+      style="font-size: 2rem"
     >
-      <div class="card h-100 text-center">
-        <img
-          [src]="film.cover_url"
-          class="card-img-top"
-          [alt]="film.title"
-          [title]="film.description"
-        />
-        <div class="card-body position-relative">
-          <h5 class="card-title">{{ film.title }}</h5>
-          <p class="card-text">{{ film.description }}</p>
-          <a
-            *ngIf="
-              userService.loggedUser &&
-              film.created_by === userService.loggedUser.id
-            "
-            class="badge badge-danger rounded position-absolute"
-            style="bottom: 2%; left: 2%; cursor: pointer"
-            [routerLink]="['/edit-film', film.title]"
-            >Delete</a
-          >
-          <a
-            *ngIf="
-              userService.loggedUser &&
-              film.created_by === userService.loggedUser.id
-            "
-            class="badge badge-warning rounded position-absolute"
-            style="bottom: 2%; right: 2%; cursor: pointer"
-            [routerLink]="['/edit-film', film.id]"
-            >Edit</a
-          >
+      Last Films
+    </div>
+    <div class="row row-cols-6">
+      <div
+        class="col-12 col-sm-6 col-md-4 col-lg-3 mt-4"
+        *ngFor="let film of lastFilms"
+      >
+        <div class="card h-100 text-center position-relative">
+          <div class="position-absolute w-100">
+            <ng-template #t let-fill="fill">
+              <span class="star" [class.full]="fill === 100">
+                <span class="half" [style.width.%]="fill">&#9733;</span>&#9733;
+              </span>
+            </ng-template>
+            <ngb-rating
+              (rateChange)="edit($event, film)"
+              [starTemplate]="t"
+              [max]="5"
+              [(rate)]="film.starRating"
+              [readonly]="false"
+            ></ngb-rating>
+          </div>
+          <img
+            [src]="film.cover_url"
+            class="card-img-top mt-5"
+            [alt]="film.title"
+            [title]="film.description"
+          />
+          <div class="card-body position-relative">
+            <h5 class="card-title">{{ film.title }}</h5>
+            <p class="card-text text-justify">{{ film.description }}</p>
+            <app-modifier-button
+              [show]="userID && film.created_by === userID ? true : false"
+              (remove)="delete(film)"
+              [label]="['Delete']"
+            ></app-modifier-button>
+            <app-modifier-button
+              [show]="userID && film.created_by === userID ? true : false"
+              [link]="['/edit-film', film.id]"
+              [label]="['Edit']"
+            ></app-modifier-button>
+          </div>
+          <div class="card-footer bg-light">
+            <button
+              class="btn btn-outline-dark"
+              [routerLink]="['/filmDetails', film.title]"
+            >
+              More details
+            </button>
+          </div>
         </div>
-        <div class="card-footer bg-light">
-          <button
-            class="btn btn-outline-dark"
-            [routerLink]="['/filmDetails', film.title]"
-          >
-            More details
-          </button>
+      </div>
+    </div>
+    <div
+      class="m-auto text-center text-dark pt-3 font-weight-bold"
+      style="font-size: 2rem"
+    >
+      Top Films
+    </div>
+    <div class="row row-cols-6">
+      <div
+        class="col-12 col-sm-6 col-md-4 col-lg-3 mt-4"
+        *ngFor="let film of topFilms"
+      >
+        <div class="card h-100 text-center position-relative">
+          <div class="position-absolute w-100">
+            <fa-icon
+              [icon]="fullStar"
+              class="iconGoldColor"
+              *ngFor="let index of createRangeForStar(film.vote, 'gold')"
+            >
+            </fa-icon>
+            <fa-icon
+              [icon]="halfStar"
+              class="iconGoldColor"
+              *ngFor="
+                let index of createRangeForHalfStar(film.vote % 1, 'silver')
+              "
+            ></fa-icon>
+            <fa-icon
+              [icon]="blankStar"
+              class="iconGoldColor"
+              *ngFor="let index of createRangeForStar(5 - film.vote, 'silver')"
+            ></fa-icon>
+          </div>
+          <img
+            [src]="film.cover_url"
+            class="card-img-top mt-5"
+            [alt]="film.title"
+            [title]="film.description"
+          />
+          <div class="card-body position-relative">
+            <h5 class="card-title">{{ film.title }}</h5>
+            <p class="card-text text-justify">{{ film.description }}</p>
+            <app-modifier-button
+              [show]="userID && film.created_by === userID ? true : false"
+              (remove)="delete(film)"
+              [label]="['Delete']"
+            ></app-modifier-button>
+            <app-modifier-button
+              [show]="userID && film.created_by === userID ? true : false"
+              [link]="['/edit-film', film.id]"
+              [label]="['Edit']"
+            ></app-modifier-button>
+          </div>
+          <div class="card-footer bg-light">
+            <button
+              class="btn btn-outline-dark"
+              [routerLink]="['/filmDetails', film.title]"
+            >
+              More details
+            </button>
+          </div>
         </div>
       </div>
     </div>
   </div>
-  <div
-    class="m-auto text-center text-dark pt-3 font-weight-bold"
-    style="font-size: 2rem"
-  >
-    Top Films
-  </div>
-  <div class="row row-cols-6">
-    <div
-      class="col-12 col-sm-6 col-md-4 col-lg-3 mt-4"
-      *ngFor="let film of topFilms"
-    >
-      <div class="card h-100 text-center position-relative">
-        <div class="position-absolute w-100">
-          <fa-icon
-            [icon]="fullStar"
-            class="iconGoldColor"
-            *ngFor="let index of createRangeForStar(film.vote, 'gold')"
-          >
-          </fa-icon>
-          <fa-icon
-            [icon]="halfStar"
-            class="iconGoldColor"
-            *ngFor="
-              let index of createRangeForHalfStar(film.vote % 1, 'silver')
-            "
-          ></fa-icon>
-          <fa-icon
-            [icon]="blankStar"
-            class="iconGoldColor"
-            *ngFor="let index of createRangeForStar(5 - film.vote, 'silver')"
-          ></fa-icon>
-        </div>
-        <img
-          [src]="film.cover_url"
-          class="card-img-top mt-4"
-          [alt]="film.title"
-          [title]="film.description"
-        />
-        <div class="card-body position-relative">
-          <h5 class="card-title">{{ film.title }}</h5>
-          <p class="card-text">{{ film.description }}</p>
-          <a
-            *ngIf="
-              userService.loggedUser &&
-              film.created_by === userService.loggedUser.id
-            "
-            class="badge badge-danger rounded position-absolute"
-            style="bottom: 2%; left: 2%; cursor: pointer"
-            (click)="delete(film)"
-            >Delete</a
-          >
-          <a
-            *ngIf="
-              userService.loggedUser &&
-              film.created_by === userService.loggedUser.id
-            "
-            class="badge badge-warning rounded position-absolute"
-            style="bottom: 2%; right: 2%; cursor: pointer"
-            [routerLink]="['/edit-film', film.id]"
-            >Edit</a
-          >
-        </div>
-        <div class="card-footer bg-light">
-          <button
-            class="btn btn-outline-dark"
-            [routerLink]="['/filmDetails', film.title]"
-          >
-            More details
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div *ngIf="isWaiting">
-    <div class="loader"></div>
-  </div>
+</div>
+<div *ngIf="isWaiting" class="modal">
+  <div class="loader"></div>
 </div>

@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 export class FilmListComponent implements OnInit {
   search: string = '';
   isWaiting = true;
+  userID: number | undefined = 0;
   films: Film[] = [];
   showedFilms: Film[] = this.films;
   constructor(
@@ -24,11 +25,12 @@ export class FilmListComponent implements OnInit {
   ngOnInit(): void {
     let observable: Observable<any> = this.filmService.getFilms();
     observable.subscribe((response) => {
-      console.log(response);
       this.films = response;
       this.showedFilms = response;
       this.isWaiting = false;
     });
+
+    this.userID = this.userService.loggedUser?.id;
   }
 
   searchHandler() {

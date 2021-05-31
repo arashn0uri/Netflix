@@ -14,6 +14,7 @@ import { Router } from '@angular/router';
 export class ActorsComponent implements OnInit {
   userCircle = faUserCircle;
   isWaiting: boolean = true;
+  userID: number | undefined = 0;
   actors: Actor[] = [];
   constructor(
     private actorService: ActorService,
@@ -24,13 +25,13 @@ export class ActorsComponent implements OnInit {
   ngOnInit(): void {
     let observable: Observable<any> = this.actorService.getActors();
     observable.subscribe((response) => {
-      console.log(response);
       this.actors = response;
       this.actors.sort((firstActor, secondActor) => {
         return secondActor.firstname > firstActor.firstname ? -1 : 1;
       });
       this.isWaiting = false;
     });
+    this.userID = this.userService.loggedUser?.id;
   }
 
   delete(actor: Actor) {

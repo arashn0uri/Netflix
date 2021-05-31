@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 })
 export class GenresComponent implements OnInit {
   film = faFilm;
-  isWating = true;
+  isWaiting = true;
   genres: any[] = [];
   constructor(
     private genreService: GenreService,
@@ -24,9 +24,8 @@ export class GenresComponent implements OnInit {
   ngOnInit(): void {
     let observable: Observable<any> = this.genreService.getGenres();
     observable.subscribe((response) => {
-      console.log(response);
       this.genres = response;
-      this.isWating = false;
+      this.isWaiting = false;
     });
   }
 

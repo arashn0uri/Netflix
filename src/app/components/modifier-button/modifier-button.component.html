@@ -1,0 +1,13 @@
+<a
+  *ngIf="show && label[0].toLowerCase() === 'edit'"
+  class="badge badge-warning rounded position-absolute badge-warning edit"
+  [routerLink]="link"
+  >{{ label }}</a
+>
+
+<a
+  *ngIf="show && label[0].toLowerCase() === 'delete'"
+  class="badge badge-warning rounded position-absolute badge-danger delete"
+  (click)="delete()"
+  >{{ label }}</a
+>

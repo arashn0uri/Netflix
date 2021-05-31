@@ -7,6 +7,7 @@ import { faStarHalfAlt as halfStar } from '@fortawesome/free-solid-svg-icons';
 import { faStar as blankStar } from '@fortawesome/free-regular-svg-icons';
 import { UserService } from 'src/app/services/user.service';
 import { Film } from 'src/app/models/film';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-film-details',
@@ -18,13 +19,15 @@ export class FilmDetailsComponent implements OnInit {
   halfStar = halfStar;
   blankStar = blankStar;
   isWaiting: boolean = true;
+  show: boolean = false;
   film: any = {};
 
   constructor(
     private filmService: FilmService,
     private route: ActivatedRoute,
     public userService: UserService,
-    private router: Router
+    private router: Router,
+    private location: Location
   ) {}
 
   ngOnInit(): void {
@@ -36,6 +39,11 @@ export class FilmDetailsComponent implements OnInit {
         (film: { title: string }) => film.title == filmIdFromRoute
       );
       this.isWaiting = false;
+      this.show =
+        this.userService.loggedUser &&
+        this.film.created_by === this.userService.loggedUser.id
+          ? true
+          : false;
     });
   }
   createRangeForStar(number: number, color: string) {
@@ -63,5 +71,9 @@ export class FilmDetailsComponent implements OnInit {
         alert('deleting film failed. try again after one minute, please!');
       }
     });
+  }
+
+  goBack() {
+    this.location.back();
   }
 }

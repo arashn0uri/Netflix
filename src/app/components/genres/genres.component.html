@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" *ngIf="!isWaiting">
   <div class="d-flex justify-content-end align-items-center mt-3">
     <a class="btn btn-outline-primary" routerLink="/add-genre">Add a Genre</a>
   </div>
@@ -11,20 +11,16 @@
         <fa-icon [icon]="film" size="6x"></fa-icon>
         <div class="card-body position-relative">
           <h5>{{ genre.name }}</h5>
-          <a
-            *ngIf="userService.loggedUser && genre.id > 300"
-            class="badge badge-danger rounded position-absolute"
-            style="bottom: -12%; left: 5%; cursor: pointer"
-            (click)="delete(genre)"
-            >Delete</a
-          >
-          <a
-            *ngIf="userService.loggedUser && genre.id > 300"
-            class="badge badge-warning rounded position-absolute"
-            style="bottom: -12%; right: 5%"
-            [routerLink]="['/edit-genre', genre.id]"
-            >Edit</a
-          >
+          <app-modifier-button
+            [show]="genre.id > 300 ? true : false"
+            (remove)="delete(genre)"
+            [label]="['Delete']"
+          ></app-modifier-button>
+          <app-modifier-button
+            [show]="genre.id > 300 ? true : false"
+            [link]="['/edit-genre', genre.id]"
+            [label]="['Edit']"
+          ></app-modifier-button>
         </div>
         <div class="card-footer bg-transparent">
           <a href="#" class="btn btn-outline-primary">Details</a>
@@ -32,7 +28,7 @@
       </div>
     </div>
   </div>
-  <div *ngIf="isWating">
-    <div class="loader"></div>
-  </div>
+</div>
+<div *ngIf="isWaiting" class="modal">
+  <div class="loader"></div>
 </div>

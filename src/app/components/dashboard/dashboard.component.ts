@@ -16,13 +16,14 @@ export class DashboardComponent implements OnInit {
   blankStar = blankStar;
   halfStar = halfStar;
   fullStar = fullStar;
+  userID: number | undefined = 0;
   films: Film[] = [];
   isWaiting = true;
   lastFilms: Film[] = [];
   topFilms: Film[] = [];
   constructor(
     private filmService: FilmService,
-    public userService: UserService,
+    private userService: UserService,
     private router: Router
   ) {}
 
@@ -30,9 +31,19 @@ export class DashboardComponent implements OnInit {
     let observable: Observable<any> = this.filmService.getFilms();
     observable.subscribe((response) => {
       this.lastFilms = this.filmService.getLastFilms(response);
+      this.lastFilms = this.lastFilms.map((film) => {
+        film.starRating =
+          film.votes?.some(
+            (vote) => vote.user_id === this.userService.loggedUser?.id
+          ) && film.created_by === this.userService.loggedUser?.id
+            ? film.vote
+            : 0;
+        return film;
+      });
       this.topFilms = this.filmService.getTopFilms(response);
       this.isWaiting = false;
     });
+    this.userID = this.userService.loggedUser?.id;
   }
 
   delete(film: Film) {
@@ -41,6 +52,32 @@ export class DashboardComponent implements OnInit {
         this.router.navigate(['/dashboard']);
       } else {
         alert('deleting film failed. try again after one minute, please!');
+      }
+    });
+  }
+
+  edit(star: number, film: Film) {
+    let breakLoop = film.votes?.some(
+      (vote) => vote.user_id === this.userService.loggedUser?.id
+    );
+    breakLoop
+      ? film.votes?.map((vote) => {
+          if (vote.user_id === this.userService.loggedUser?.id) {
+            vote.vote = star;
+            return vote;
+          }
+        })
+      : film.votes?.push({
+          id: this.userService.loggedUser?.id,
+          user_id: this.userService.loggedUser?.id,
+          vote: star,
+        });
+    console.log(film);
+    this.filmService.editFilm(film).subscribe((response) => {
+      if (response !== null) {
+        this.router.navigate(['/dashboard']);
+      } else {
+        alert('editing film failed. try again after one minute, please!');
       }
     });
   }
@@ -60,5 +97,9 @@ export class DashboardComponent implements OnInit {
       items.push(i);
     }
     return items;
+  }
+
+  sth(newRate: number) {
+    console.log(newRate);
   }
 }

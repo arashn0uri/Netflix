@@ -1,4 +1,3 @@
-import { Time } from '@angular/common';
 export interface Film {
   id: number;
   title: string;
@@ -15,4 +14,6 @@ export interface Film {
   actors: any[];
   genres: any[];
   vote: number;
+  votes?: any[];
+  starRating: number;
 }

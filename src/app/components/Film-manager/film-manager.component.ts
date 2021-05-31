@@ -126,7 +126,6 @@ export class FilmManagerComponent implements OnInit {
     this.film.genres = this.genres.filter((genre) => genre.selected);
     this.film.plot = this.film.description;
     this.film.tags = this.film.title;
-    console.log(this.film);
     this.filmService.editFilm(this.film).subscribe((response) => {
       this.film = {
         id: 0,

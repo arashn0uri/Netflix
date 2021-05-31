@@ -8,6 +8,6 @@
 <a
   *ngIf="show && label[0].toLowerCase() === 'delete'"
   class="badge badge-warning rounded position-absolute badge-danger delete"
-  (click)="delete()"
+  (click)="openModal()"
   >{{ label }}</a
 >

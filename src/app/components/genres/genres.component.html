@@ -13,13 +13,16 @@
           <h5>{{ genre.name }}</h5>
           <app-modifier-button
             [show]="genre.id > 300 ? true : false"
-            (remove)="delete(genre)"
             [label]="['Delete']"
+            [name]="genre"
+            [field]="['genre']"
           ></app-modifier-button>
           <app-modifier-button
             [show]="genre.id > 300 ? true : false"
             [link]="['/edit-genre', genre.id]"
             [label]="['Edit']"
+            [name]="genre"
+            [field]="['genre']"
           ></app-modifier-button>
         </div>
         <div class="card-footer bg-transparent">

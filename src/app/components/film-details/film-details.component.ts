@@ -63,16 +63,6 @@ export class FilmDetailsComponent implements OnInit {
     return items;
   }
 
-  delete(film: Film) {
-    this.filmService.deleteFilm(film).subscribe((response) => {
-      if (response !== null) {
-        this.router.navigate(['/films']);
-      } else {
-        alert('deleting film failed. try again after one minute, please!');
-      }
-    });
-  }
-
   goBack() {
     this.location.back();
   }

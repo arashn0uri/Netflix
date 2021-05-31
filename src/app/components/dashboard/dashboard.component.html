@@ -37,13 +37,16 @@
             <p class="card-text text-justify">{{ film.description }}</p>
             <app-modifier-button
               [show]="userID && film.created_by === userID ? true : false"
-              (remove)="delete(film)"
               [label]="['Delete']"
+              [name]="film"
+              [field]="['movie']"
             ></app-modifier-button>
             <app-modifier-button
               [show]="userID && film.created_by === userID ? true : false"
               [link]="['/edit-film', film.id]"
               [label]="['Edit']"
+              [name]="film"
+              [field]="['movie']"
             ></app-modifier-button>
           </div>
           <div class="card-footer bg-light">

@@ -38,14 +38,4 @@ export class FilmListComponent implements OnInit {
       return film.title.toLowerCase().includes(this.search.toLowerCase());
     });
   }
-
-  delete(film: Film) {
-    this.filmService.deleteFilm(film).subscribe((response) => {
-      if (response !== null) {
-        this.router.navigate(['/dashboard']);
-      } else {
-        alert('deleting film failed. try again after one minute, please!');
-      }
-    });
-  }
 }

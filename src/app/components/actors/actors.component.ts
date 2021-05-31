@@ -33,14 +33,4 @@ export class ActorsComponent implements OnInit {
     });
     this.userID = this.userService.loggedUser?.id;
   }
-
-  delete(actor: Actor) {
-    this.actorService.deleteActor(actor).subscribe((response) => {
-      if (response !== null) {
-        this.router.navigate(['/dashboard']);
-      } else {
-        alert('deleting film failed. try again after one minute, please!');
-      }
-    });
-  }
 }

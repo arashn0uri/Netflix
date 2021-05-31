@@ -28,13 +28,16 @@
           <p class="card-text">{{ actor.birthdate }}</p>
           <app-modifier-button
             [show]="userID && actor.created_by === userID ? true : false"
-            (remove)="delete(actor)"
             [label]="['Delete']"
+            [name]="actor"
+            [field]="['profile']"
           ></app-modifier-button>
           <app-modifier-button
             [show]="userID && actor.created_by === userID ? true : false"
             [link]="['/edit-actor', actor.id]"
             [label]="['Edit']"
+            [name]="actor"
+            [field]="['profile']"
           ></app-modifier-button>
         </div>
         <div class="card-footer bg-transparent">

@@ -46,16 +46,6 @@ export class DashboardComponent implements OnInit {
     this.userID = this.userService.loggedUser?.id;
   }
 
-  delete(film: Film) {
-    this.filmService.deleteFilm(film).subscribe((response) => {
-      if (response !== null) {
-        this.router.navigate(['/dashboard']);
-      } else {
-        alert('deleting film failed. try again after one minute, please!');
-      }
-    });
-  }
-
   edit(star: number, film: Film) {
     let breakLoop = film.votes?.some(
       (vote) => vote.user_id === this.userService.loggedUser?.id

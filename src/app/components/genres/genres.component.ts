@@ -28,14 +28,4 @@ export class GenresComponent implements OnInit {
       this.isWaiting = false;
     });
   }
-
-  delete(genre: Genre) {
-    this.genreService.deleteGenre(genre).subscribe((response) => {
-      if (response !== null) {
-        this.router.navigate(['/dashboard']);
-      } else {
-        alert('deleting genre failed. try again after one minute, please!');
-      }
-    });
-  }
 }

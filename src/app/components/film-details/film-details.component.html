@@ -44,13 +44,16 @@
           </div>
           <app-modifier-button
             [show]="show"
-            (remove)="delete(film)"
             [label]="['Delete']"
+            [name]="film"
+            [field]="['movie']"
           ></app-modifier-button>
           <app-modifier-button
             [show]="show"
             [link]="['/edit-film', film.id]"
             [label]="['Edit']"
+            [name]="film"
+            [field]="['movie']"
           ></app-modifier-button>
         </div>
         <div class="card-footer bg-light">

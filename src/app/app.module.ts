@@ -22,6 +22,7 @@ import { ActorManagerComponent } from './components/actor-manager/actor-manager.
 import { GenreManagerComponent } from './components/genre-manager/genre-manager.component';
 import { ModifierButtonComponent } from './components/modifier-button/modifier-button.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ModalComponent } from './components/modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ActorManagerComponent,
     GenreManagerComponent,
     ModifierButtonComponent,
+    ModalComponent,
   ],
   imports: [
     BrowserModule,

@@ -9,8 +9,9 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { ActorsComponent } from './components/actors/actors.component';
 import { GenresComponent } from './components/genres/genres.component';
 import { ActorManagerComponent } from './components/actor-manager/actor-manager.component';
-import { FilmManagerComponent } from './components/Film-manager/film-manager.component';
+import { FilmManagerComponent } from './components/film-manager/film-manager.component';
 import { GenreManagerComponent } from './components/genre-manager/genre-manager.component';
+import { ProfileManagerComponent } from './components/profile/profile-manager/profile-manager.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
   { path: 'filmDetails/:filmTitle', component: FilmDetailsComponent },
   { path: 'profile', component: ProfileComponent },
+  { path: 'edit-profile', component: ProfileManagerComponent },
   { path: 'add-film', component: FilmManagerComponent },
   { path: 'actors', component: ActorsComponent },
   { path: 'genres', component: GenresComponent },

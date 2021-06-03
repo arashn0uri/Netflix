@@ -50,13 +50,18 @@
           class="nav-item d-flex align-items-center"
           *ngIf="!userService.loggedUser"
         >
-          <a class="btn btn-primary my-auto" routerLink="/login">Login</a>
+          <a
+            class="btn btn-primary my-auto"
+            routerLink="/login"
+            (click)="closeMenu()"
+            >Login</a
+          >
         </li>
         <li
           class="nav-item d-flex align-items-center ml-2"
           *ngIf="userService.loggedUser"
         >
-          <a routerLink="/profile">
+          <a routerLink="/profile" (click)="closeMenu()">
             <img
               [src]="userService.loggedUser.photo_url"
               class="rounded-circle"

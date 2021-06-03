@@ -15,7 +15,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { NgxLocalStorageModule } from 'ngx-localstorage';
 import { FilmDetailsComponent } from './components/film-details/film-details.component';
 import { ProfileComponent } from './components/profile/profile.component';
-import { FilmManagerComponent } from './components/Film-manager/film-manager.component';
+import { FilmManagerComponent } from './components/film-manager/film-manager.component';
 import { ActorsComponent } from './components/actors/actors.component';
 import { GenresComponent } from './components/genres/genres.component';
 import { ActorManagerComponent } from './components/actor-manager/actor-manager.component';
@@ -23,6 +23,7 @@ import { GenreManagerComponent } from './components/genre-manager/genre-manager.
 import { ModifierButtonComponent } from './components/modifier-button/modifier-button.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ModalComponent } from './components/modal/modal.component';
+import { ProfileManagerComponent } from './components/profile/profile-manager/profile-manager.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { ModalComponent } from './components/modal/modal.component';
     GenreManagerComponent,
     ModifierButtonComponent,
     ModalComponent,
+    ProfileManagerComponent,
   ],
   imports: [
     BrowserModule,

@@ -10,11 +10,12 @@ import { User } from '../models/user';
   providedIn: 'root',
 })
 export class UserService {
-  private loginUrl = 'https://netflix.cristiancarrino.com/user/login.php';
+  private host = 'https://netflix.cristiancarrino.com';
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
   };
   loggedUser: User | null = null;
+  rememberMe: boolean = false;
   constructor(
     private http: HttpClient,
     private storageService: LocalStorageService
@@ -25,9 +26,10 @@ export class UserService {
     password: string,
     rememberMe: boolean
   ): Observable<User | null> {
+    this.rememberMe = rememberMe;
     return this.http
       .post<User | null>(
-        this.loginUrl,
+        this.host + '/user/login.php',
         { username: username, password: password },
         this.httpOptions
       )
@@ -53,5 +55,38 @@ export class UserService {
   loggedOut(): User | null {
     this.storageService.remove('loggedUser');
     return (this.loggedUser = null);
+  }
+
+  editUser(user: any): Observable<User | null> {
+    if (!this.loggedUser) {
+      alert('Please login before');
+      return of(null);
+    }
+
+    let httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: this.loggedUser.token,
+      }),
+    };
+
+    return this.http
+      .post<User>(this.host + '/user/edit.php', user, httpOptions)
+      .pipe(
+        tap((response) => {
+          console.log(response);
+          this.loggedUser = response;
+          console.log(this.rememberMe);
+
+          if (this.rememberMe) {
+            this.storageService.clear();
+            this.storageService.set('loggedUser', this.loggedUser);
+          }
+        }),
+        catchError((error) => {
+          alert(error.status + ': ' + error.error);
+          return of(null);
+        })
+      );
   }
 }

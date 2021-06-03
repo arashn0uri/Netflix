@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
 import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
 import { User } from 'src/app/models/user';
+declare var $: any;
 
 @Component({
   selector: 'app-profile',

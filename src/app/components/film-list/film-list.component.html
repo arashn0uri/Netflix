@@ -1,14 +1,20 @@
 <div class="container" *ngIf="!isWaiting">
-  <div class="searchAdd">
+  <div class="searchAdd row">
     <input
       type="text"
-      class="w-75 p-1 border rounded searchBox"
-      placeholder="Search"
+      class="w-100 p-1 border rounded searchBox col-md-8"
+      placeholder="Ricerca"
       [(ngModel)]="search"
       (input)="searchHandler()"
     />
-    <p class="text-secondary d-flex align-items-center m-0">OR</p>
-    <a class="btn btn-outline-dark" routerLink="/add-film">Add a new movie</a>
+    <p
+      class="text-secondary d-flex align-items-center justify-content-center m-0 col-md-1"
+    >
+      O
+    </p>
+    <a class="btn btn-outline-dark col-md-3" routerLink="/add-film"
+      >Aggiungi un film</a
+    >
   </div>
   <div class="row row-cols-6">
     <div
@@ -27,16 +33,16 @@
           <p class="card-text text-justify">{{ film.description }}</p>
           <app-modifier-button
             [show]="userID && film.created_by === userID ? true : false"
-            [label]="['Delete']"
+            [label]="['Elimina']"
             [name]="film"
-            [field]="['movie']"
+            [field]="['film']"
           ></app-modifier-button>
           <app-modifier-button
             [show]="userID && film.created_by === userID ? true : false"
             [link]="['/edit-film', film.id]"
-            [label]="['Edit']"
+            [label]="['Modifica']"
             [name]="film"
-            [field]="['movie']"
+            [field]="['film']"
           ></app-modifier-button>
         </div>
         <div class="card-footer bg-light">
@@ -44,7 +50,7 @@
             class="btn btn-outline-dark"
             [routerLink]="['/filmDetails', film.title]"
           >
-            More details
+            dettagli
           </button>
         </div>
       </div>

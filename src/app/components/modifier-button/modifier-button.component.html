@@ -1,12 +1,12 @@
 <a
-  *ngIf="show && label[0].toLowerCase() === 'edit'"
+  *ngIf="show && label[0].toLowerCase() === 'modifica'"
   class="badge badge-warning rounded position-absolute badge-warning edit"
   [routerLink]="link"
   >{{ label }}</a
 >
 
 <a
-  *ngIf="show && label[0].toLowerCase() === 'delete'"
+  *ngIf="show && label[0].toLowerCase() === 'elimina'"
   class="badge badge-warning rounded position-absolute badge-danger delete"
   (click)="openModal()"
   >{{ label }}</a

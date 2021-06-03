@@ -1,6 +1,8 @@
 <div class="container" *ngIf="!isWaiting">
   <div class="d-flex justify-content-end align-items-center mt-3">
-    <a class="btn btn-outline-dark" routerLink="/add-actor">Add an actor</a>
+    <a class="btn btn-outline-info" routerLink="/add-actor"
+      >Aggiungi un attore</a
+    >
   </div>
   <div class="row row-cols-6">
     <div
@@ -28,20 +30,20 @@
           <p class="card-text">{{ actor.birthdate }}</p>
           <app-modifier-button
             [show]="userID && actor.created_by === userID ? true : false"
-            [label]="['Delete']"
+            [label]="['Elimina']"
             [name]="actor"
-            [field]="['profile']"
+            [field]="['attore']"
           ></app-modifier-button>
           <app-modifier-button
             [show]="userID && actor.created_by === userID ? true : false"
             [link]="['/edit-actor', actor.id]"
-            [label]="['Edit']"
+            [label]="['Modifica']"
             [name]="actor"
-            [field]="['profile']"
+            [field]="['attore']"
           ></app-modifier-button>
         </div>
-        <div class="card-footer bg-transparent">
-          <button class="btn btn-outline-dark">More details</button>
+        <div class="card-footer bg-light">
+          <button class="btn btn-outline-info">dettagli</button>
         </div>
       </div>
     </div>

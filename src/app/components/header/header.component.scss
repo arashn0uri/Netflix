@@ -7,6 +7,55 @@
   .title {
     color: #343a40;
   }
+
+  #navbarNav {
+    background-color: transparent;
+
+    @media (max-width: 991px) {
+      position: absolute;
+      width: 100%;
+      top: 66px;
+      left: 0px;
+      padding: 0 0 20px 20px;
+      background-color: rgba($color: #ffffff, $alpha: 0.5);
+      transition: all 0.3s ease-in-out;
+    }
+  }
+
+  .progressBar {
+    display: inline-block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 4px;
+    width: 0;
+    background-color: rgb(170, 9, 20);
+  }
+
+  #up {
+    position: fixed;
+    bottom: 60px;
+    right: 20px;
+    display: none;
+    transition: all 0.3s ease-in-out;
+    color: rgb(170, 9, 20);
+
+    &:hover {
+      background-color: rgb(170, 9, 20);
+      color: #fff;
+      transform: translateY(-10px);
+      box-shadow: 0 0 1rem rgba(170, 9, 20, 0.5);
+    }
+
+    &:focus {
+      outline: none;
+      box-shadow: none;
+    }
+
+    &:active {
+      outline: none;
+    }
+  }
 }
 
 .dark {

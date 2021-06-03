@@ -13,6 +13,8 @@ export class ModalComponent implements OnInit {
   @Input() public name: any;
   @Input() public filed: string = '';
   title: string = '';
+  article1: string = 'il ';
+  article2: string = 'al ';
   @Input() field: string = '';
   @Output() erase = new EventEmitter();
 
@@ -25,9 +27,11 @@ export class ModalComponent implements OnInit {
 
   ngOnInit(): void {
     this.title = this.name.title ? this.name.title : this.name.name;
-    this.title = this.title
-      ? this.title
-      : `${this.name.firstname} ${this.name.lastname}`;
+    if (!this.title) {
+      this.title = `${this.name.firstname} ${this.name.lastname}`;
+      this.article1 = "l'";
+      this.article2 = "all'";
+    }
   }
 
   delete() {

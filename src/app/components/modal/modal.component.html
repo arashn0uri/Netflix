@@ -1,5 +1,5 @@
 <div class="modal-header">
-  <h4 class="modal-title" id="modal-title">{{ field }} deletion</h4>
+  <h4 class="modal-title" id="modal-title">cancellazione del {{ field }}</h4>
   <button
     type="button"
     class="close"
@@ -12,14 +12,15 @@
 <div class="modal-body">
   <p>
     <strong
-      >Are you sure you want to delete
-      <span class="text-primary">{{ title }}</span> {{ field }}?</strong
+      >Sei sicuro di voler eliminare {{ article1 }}{{ field }}
+      <span class="text-primary">{{ title }}</span
+      >?</strong
     >
   </p>
   <p>
-    All information associated to the {{ title }} {{ field }} will be
-    permanently deleted.
-    <span class="text-danger">This operation can not be undone.</span>
+    Tutte le informazioni associate {{ article2 }}{{ field }}
+    {{ title }} verranno eliminate definitivamente.
+    <span class="text-danger">Questa operazione non può essere annullata.</span>
   </p>
 </div>
 <div class="modal-footer">
@@ -27,14 +28,15 @@
     type="button"
     class="btn btn-outline-secondary"
     (click)="modal.dismiss('cancel click')"
+    ngbAutofocus
   >
-    Cancel
+    Annullare
   </button>
   <button
     type="button"
     class="btn btn-danger"
     (click)="modal.close('Ok click'); delete()"
   >
-    Ok
+    Elimina
   </button>
 </div>

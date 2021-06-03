@@ -1,15 +1,15 @@
 <div class="container">
   <div
-    class="m-auto text-center pt-3 font-weight-bold position-relative large text-danger"
+    class="m-auto text-center pt-5 font-weight-bold position-relative large text-danger"
   >
     <a
       (click)="goBack()"
       class="btn button-transparent text-danger position-absolute"
       style="top: 1%; left: 1%"
     >
-      < go back
+      < Indietro
     </a>
-    MANAGE THE FILM - ADD OR EDIT
+    GESTISCI IL FILM - AGGIUNGI O MODIFICA
   </div>
   <hr class="text-info" />
   <div class="row">
@@ -166,24 +166,24 @@
         </div>
       </div>
       <div class="form-group row justify-content-around">
-        <div class="col-sm-4">
+        <div class="col-sm-6 mt-2 d-flex justify-content-center">
           <button
             type="submit"
             class="w-75 btn btn-info"
             (click)="add()"
             [disabled]="disabled"
           >
-            Add
+            AGGIUNGI
           </button>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-6 mt-2 d-flex justify-content-center">
           <button
             type="submit"
             class="w-75 btn btn-warning"
             (click)="edit()"
             [disabled]="!disabled"
           >
-            Edit
+            MODIFICA
           </button>
         </div>
       </div>

@@ -37,16 +37,16 @@
             <p class="card-text text-justify">{{ film.description }}</p>
             <app-modifier-button
               [show]="userID && film.created_by === userID ? true : false"
-              [label]="['Delete']"
+              [label]="['Elimina']"
               [name]="film"
-              [field]="['movie']"
+              [field]="['film']"
             ></app-modifier-button>
             <app-modifier-button
               [show]="userID && film.created_by === userID ? true : false"
               [link]="['/edit-film', film.id]"
-              [label]="['Edit']"
+              [label]="['Modifica']"
               [name]="film"
-              [field]="['movie']"
+              [field]="['film']"
             ></app-modifier-button>
           </div>
           <div class="card-footer bg-light">
@@ -54,7 +54,7 @@
               class="btn btn-outline-dark"
               [routerLink]="['/filmDetails', film.title]"
             >
-              More details
+              dettagli
             </button>
           </div>
         </div>
@@ -103,13 +103,16 @@
             <p class="card-text text-justify">{{ film.description }}</p>
             <app-modifier-button
               [show]="userID && film.created_by === userID ? true : false"
-              (remove)="delete(film)"
-              [label]="['Delete']"
+              [label]="['Elimina']"
+              [name]="film"
+              [field]="['film']"
             ></app-modifier-button>
             <app-modifier-button
               [show]="userID && film.created_by === userID ? true : false"
               [link]="['/edit-film', film.id]"
-              [label]="['Edit']"
+              [label]="['Modifica']"
+              [name]="film"
+              [field]="['film']"
             ></app-modifier-button>
           </div>
           <div class="card-footer bg-light">
@@ -117,7 +120,7 @@
               class="btn btn-outline-dark"
               [routerLink]="['/filmDetails', film.title]"
             >
-              More details
+              dettagli
             </button>
           </div>
         </div>

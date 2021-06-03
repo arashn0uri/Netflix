@@ -1,6 +1,8 @@
 <div class="container" *ngIf="!isWaiting">
   <div class="d-flex justify-content-end align-items-center mt-3">
-    <a class="btn btn-outline-primary" routerLink="/add-genre">Add a Genre</a>
+    <a class="btn btn-outline-info" routerLink="/add-genre"
+      >Aggiungi un genere</a
+    >
   </div>
   <div class="row row-cols-6">
     <div
@@ -13,20 +15,20 @@
           <h5>{{ genre.name }}</h5>
           <app-modifier-button
             [show]="genre.id > 300 ? true : false"
-            [label]="['Delete']"
+            [label]="['Elimina']"
             [name]="genre"
             [field]="['genre']"
           ></app-modifier-button>
           <app-modifier-button
             [show]="genre.id > 300 ? true : false"
             [link]="['/edit-genre', genre.id]"
-            [label]="['Edit']"
+            [label]="['Modifica']"
             [name]="genre"
             [field]="['genre']"
           ></app-modifier-button>
         </div>
-        <div class="card-footer bg-transparent">
-          <a href="#" class="btn btn-outline-primary">Details</a>
+        <div class="card-footer bg-light">
+          <a href="#" class="btn btn-outline-info">dettagli</a>
         </div>
       </div>
     </div>

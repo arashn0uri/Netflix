@@ -44,21 +44,21 @@
           </div>
           <app-modifier-button
             [show]="show"
-            [label]="['Delete']"
+            [label]="['Elimina']"
             [name]="film"
-            [field]="['movie']"
+            [field]="['film']"
           ></app-modifier-button>
           <app-modifier-button
             [show]="show"
             [link]="['/edit-film', film.id]"
-            [label]="['Edit']"
+            [label]="['Modifica']"
             [name]="film"
-            [field]="['movie']"
+            [field]="['film']"
           ></app-modifier-button>
         </div>
         <div class="card-footer bg-light">
           <button class="btn btn-outline-dark" (click)="goBack()">
-            Go back
+            Indietro
           </button>
         </div>
       </div>

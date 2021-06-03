@@ -70,6 +70,8 @@ export class UserService {
       }),
     };
 
+    console.log('Editing user:', user);
+
     return this.http
       .post<User>(this.host + '/user/edit.php', user, httpOptions)
       .pipe(

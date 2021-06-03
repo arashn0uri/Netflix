@@ -71,7 +71,7 @@ export class GenreService {
       }),
     };
 
-    console.log('Adding genre:', genre);
+    console.log('Editing genre:', genre);
     return this.http
       .post<any>(this.host + '/genre/update.php', genre, httpOptions)
       .pipe(
@@ -107,7 +107,7 @@ export class GenreService {
       }),
     };
 
-    console.log('deleting genre:', genre);
+    console.log('Deleting genre:', genre);
     return this.http
       .post<any>(this.host + '/genre/delete.php', { id: genre.id }, httpOptions)
       .pipe(

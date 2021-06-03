@@ -62,7 +62,6 @@ export class DashboardComponent implements OnInit {
           user_id: this.userService.loggedUser?.id,
           vote: star,
         });
-    console.log(film);
     this.filmService.editFilm(film).subscribe((response) => {
       if (response !== null) {
         this.router.navigate(['/dashboard']);
@@ -87,9 +86,5 @@ export class DashboardComponent implements OnInit {
       items.push(i);
     }
     return items;
-  }
-
-  sth(newRate: number) {
-    console.log(newRate);
   }
 }

@@ -109,7 +109,7 @@ export class FilmService {
       }),
     };
 
-    console.log('Provo a cancellare il film:', film);
+    console.log('Deleting film:', film);
     return this.http
       .post<any>(this.host + '/film/delete.php', { id: film.id }, httpOptions)
       .pipe(

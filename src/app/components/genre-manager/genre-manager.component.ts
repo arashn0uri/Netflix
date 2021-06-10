@@ -11,7 +11,7 @@ import { GenreService } from 'src/app/services/genre.service';
   styleUrls: ['./genre-manager.component.scss'],
 })
 export class GenreManagerComponent implements OnInit {
-  disabled: boolean = false;
+  modify: boolean = false;
   genre: Genre = {
     name: '',
     image_url: '',
@@ -27,7 +27,7 @@ export class GenreManagerComponent implements OnInit {
     const routeParams = this.route.snapshot.paramMap;
     const filmIdFromRoute = routeParams.get('genreID');
     if (filmIdFromRoute) {
-      this.disabled = true;
+      this.modify = true;
       let observable: Observable<any> = this.genreService.getGenres();
       observable.subscribe((response) => {
         this.genre = response.find(

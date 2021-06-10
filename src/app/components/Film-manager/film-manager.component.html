@@ -13,7 +13,7 @@
   </div>
   <hr class="text-info" />
   <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-4 d-flex justify-content-center align-items-center">
       <img
         [src]="
           film.cover_url ||
@@ -55,7 +55,7 @@
         <label for="duration" class="col-sm-2 col-form-label"
           >Film duration</label
         >
-        <div class="col-sm-10">
+        <div class="input-group col-sm-10">
           <input
             type="text"
             class="form-control"
@@ -63,14 +63,16 @@
             [(ngModel)]="film.duration"
             name="duration"
           />
+          <div class="input-group-append">
+            <span class="input-group-text" id="basic-addon2">es. 01:29:50</span>
+          </div>
         </div>
-        <span class="badge badge-secondary">es. 01:29:50</span>
       </div>
       <div class="form-group row position-relative">
         <label for="release_year" class="col-sm-2 col-form-label"
           >Release Year</label
         >
-        <div class="col-sm-10">
+        <div class="input-group col-sm-10">
           <input
             type="number"
             class="form-control"
@@ -78,12 +80,14 @@
             [(ngModel)]="film.release_year"
             name="release_year"
           />
+          <div class="input-group-append">
+            <span class="input-group-text" id="basic-addon2">es. 1999</span>
+          </div>
         </div>
-        <span class="badge badge-secondary">es. 1999</span>
       </div>
       <div class="form-group row position-relative">
         <label for="stars" class="col-sm-2 col-form-label">Film stars</label>
-        <div class="col-sm-10">
+        <div class="input-group col-sm-10">
           <input
             type="number"
             min="0"
@@ -93,8 +97,10 @@
             [(ngModel)]="film.stars"
             name="stars"
           />
+          <div class="input-group-append">
+            <span class="input-group-text" id="basic-addon2">from 0 to 5</span>
+          </div>
         </div>
-        <span class="badge badge-secondary badgeStars">from 0 to 5</span>
       </div>
       <div class="form-group row">
         <label for="cover_url" class="col-sm-2 col-form-label">cover</label>
@@ -140,7 +146,7 @@
       </div>
       <div class="form-group row position-relative">
         <label for="vote" class="col-sm-2 col-form-label">Your vote</label>
-        <div class="col-sm-10">
+        <div class="input-group col-sm-10">
           <input
             type="text"
             class="form-control"
@@ -148,8 +154,10 @@
             [(ngModel)]="film.vote"
             name="vote"
           />
+          <div class="input-group-append">
+            <span class="input-group-text" id="basic-addon2">from 0 to 5</span>
+          </div>
         </div>
-        <span class="badge badge-secondary badgeStars">from 0 to 5</span>
       </div>
       <div class="form-group row">
         <label for="genres" class="col-sm-2 col-form-label">Genres</label>
@@ -166,23 +174,16 @@
         </div>
       </div>
       <div class="form-group row justify-content-around">
-        <div class="col-sm-6 mt-2 d-flex justify-content-center">
-          <button
-            type="submit"
-            class="w-75 btn btn-info"
-            (click)="add()"
-            [disabled]="disabled"
-          >
+        <div
+          class="col-sm-6 mt-2 d-flex justify-content-center"
+          *ngIf="!modify"
+        >
+          <button type="submit" class="w-75 btn btn-info" (click)="add()">
             AGGIUNGI
           </button>
         </div>
-        <div class="col-sm-6 mt-2 d-flex justify-content-center">
-          <button
-            type="submit"
-            class="w-75 btn btn-warning"
-            (click)="edit()"
-            [disabled]="!disabled"
-          >
+        <div class="col-sm-6 mt-2 d-flex justify-content-center" *ngIf="modify">
+          <button type="submit" class="w-75 btn btn-warning" (click)="edit()">
             MODIFICA
           </button>
         </div>

@@ -63,7 +63,10 @@
         >
           <a routerLink="/profile" (click)="closeMenu()">
             <img
-              [src]="userService.loggedUser.photo_url"
+              [src]="
+                userService.loggedUser.photo_url ||
+                'http://simpleicon.com/wp-content/uploads/account.png'
+              "
               class="rounded-circle"
           /></a>
         </li>

@@ -15,7 +15,7 @@ import { Location } from '@angular/common';
   styleUrls: ['./film-manager.component.scss'],
 })
 export class FilmManagerComponent implements OnInit {
-  disabled: Boolean = false;
+  modify: Boolean = false;
   actors: Actor[] = [];
   genres: Genre[] = [];
   film: Film = {
@@ -64,7 +64,7 @@ export class FilmManagerComponent implements OnInit {
     const routeParams = this.route.snapshot.paramMap;
     const filmIdFromRoute = routeParams.get('filmID');
     if (filmIdFromRoute) {
-      this.disabled = true;
+      this.modify = true;
       let observable: Observable<any> = this.filmService.getFilms();
       observable.subscribe((response) => {
         this.film = response.find(

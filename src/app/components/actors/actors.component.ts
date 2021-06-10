@@ -31,6 +31,8 @@ export class ActorsComponent implements OnInit {
       });
       this.isWaiting = false;
     });
-    this.userID = this.userService.loggedUser?.id;
+    this.userID = this.userService.loggedUser
+      ? this.userService.loggedUser.id
+      : undefined;
   }
 }

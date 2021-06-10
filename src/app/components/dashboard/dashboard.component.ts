@@ -18,6 +18,7 @@ export class DashboardComponent implements OnInit {
   fullStar = fullStar;
   userID: number | undefined = 0;
   films: Film[] = [];
+  rate: number = 0;
   isWaiting = true;
   lastFilms: Film[] = [];
   topFilms: Film[] = [];
@@ -28,46 +29,22 @@ export class DashboardComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.userID = this.userService.loggedUser
+      ? this.userService.loggedUser.id
+      : undefined;
     let observable: Observable<any> = this.filmService.getFilms();
     observable.subscribe((response) => {
       this.lastFilms = this.filmService.getLastFilms(response);
       this.lastFilms = this.lastFilms.map((film) => {
         film.starRating =
-          film.votes?.some(
-            (vote) => vote.user_id === this.userService.loggedUser?.id
-          ) && film.created_by === this.userService.loggedUser?.id
+          film.votes?.some((vote) => vote.user_id === this.userID) &&
+          film.created_by === this.userID
             ? film.vote
             : 0;
         return film;
       });
       this.topFilms = this.filmService.getTopFilms(response);
       this.isWaiting = false;
-    });
-    this.userID = this.userService.loggedUser?.id;
-  }
-
-  edit(star: number, film: Film) {
-    let breakLoop = film.votes?.some(
-      (vote) => vote.user_id === this.userService.loggedUser?.id
-    );
-    breakLoop
-      ? film.votes?.map((vote) => {
-          if (vote.user_id === this.userService.loggedUser?.id) {
-            vote.vote = star;
-            return vote;
-          }
-        })
-      : film.votes?.push({
-          id: this.userService.loggedUser?.id,
-          user_id: this.userService.loggedUser?.id,
-          vote: star,
-        });
-    this.filmService.editFilm(film).subscribe((response) => {
-      if (response !== null) {
-        this.router.navigate(['/dashboard']);
-      } else {
-        alert('editing film failed. try again after one minute, please!');
-      }
     });
   }
 

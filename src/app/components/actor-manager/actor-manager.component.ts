@@ -11,7 +11,7 @@ import { ActorService } from 'src/app/services/actor.service';
   styleUrls: ['./actor-manager.component.scss'],
 })
 export class ActorManagerComponent implements OnInit {
-  disabled: boolean = false;
+  modify: boolean = false;
   actor: Actor = {
     id: 0,
     firstname: '',
@@ -30,7 +30,7 @@ export class ActorManagerComponent implements OnInit {
     const routeParams = this.route.snapshot.paramMap;
     const filmIdFromRoute = routeParams.get('actorID');
     if (filmIdFromRoute) {
-      this.disabled = true;
+      this.modify = true;
       let observable: Observable<any> = this.actorService.getActors();
       observable.subscribe((response) => {
         this.actor = response.find(

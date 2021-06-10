@@ -19,7 +19,7 @@
               </span>
             </ng-template>
             <ngb-rating
-              (rateChange)="edit($event, film)"
+              (rateChange)="(rate)"
               [starTemplate]="t"
               [max]="5"
               [(rate)]="film.starRating"

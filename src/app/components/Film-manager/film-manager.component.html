@@ -13,7 +13,7 @@
   </div>
   <hr class="text-info" />
   <div class="row">
-    <div class="col-md-4 d-flex justify-content-center align-items-center">
+    <div class="col-md-4 d-flex justify-content-center align-items-start">
       <img
         [src]="
           film.cover_url ||
@@ -21,113 +21,116 @@
         "
         alt=""
         srcset=""
-        class="img-thumbnail mb-3 rounded"
+        class="img-thumbnail mb-3"
       />
     </div>
     <form class="col-md-8">
       <div class="form-group row">
-        <label for="title" class="col-sm-2 col-form-label">Title</label>
-        <div class="col-sm-10">
-          <input
-            type="text"
-            class="form-control"
-            id="title"
-            [(ngModel)]="film.title"
-            name="title"
-            placeholder="es. Inception"
-          />
+        <div class="col-sm-12">
+          <mat-form-field class="w-100">
+            <mat-label>Title</mat-label>
+            <input
+              matInput
+              [(ngModel)]="film.title"
+              name="title"
+              placeholder="es. Inception"
+            />
+          </mat-form-field>
         </div>
       </div>
       <div class="form-group row">
-        <label for="director" class="col-sm-2 col-form-label">Director</label>
-        <div class="col-sm-10">
-          <input
-            type="text"
-            class="form-control"
-            id="director"
-            [(ngModel)]="film.director"
-            name="director"
-            placeholder="es. Martin Scorsese"
-          />
-        </div>
-      </div>
-      <div class="form-group row position-relative">
-        <label for="duration" class="col-sm-2 col-form-label"
-          >Film duration</label
-        >
-        <div class="input-group col-sm-10">
-          <input
-            type="text"
-            class="form-control"
-            id="duration"
-            [(ngModel)]="film.duration"
-            name="duration"
-          />
-          <div class="input-group-append">
-            <span class="input-group-text" id="basic-addon2">es. 01:29:50</span>
-          </div>
-        </div>
-      </div>
-      <div class="form-group row position-relative">
-        <label for="release_year" class="col-sm-2 col-form-label"
-          >Release Year</label
-        >
-        <div class="input-group col-sm-10">
-          <input
-            type="number"
-            class="form-control"
-            id="release_year"
-            [(ngModel)]="film.release_year"
-            name="release_year"
-          />
-          <div class="input-group-append">
-            <span class="input-group-text" id="basic-addon2">es. 1999</span>
-          </div>
-        </div>
-      </div>
-      <div class="form-group row position-relative">
-        <label for="stars" class="col-sm-2 col-form-label">Film stars</label>
-        <div class="input-group col-sm-10">
-          <input
-            type="number"
-            min="0"
-            max="5"
-            class="form-control"
-            id="stars"
-            [(ngModel)]="film.stars"
-            name="stars"
-          />
-          <div class="input-group-append">
-            <span class="input-group-text" id="basic-addon2">from 0 to 5</span>
-          </div>
+        <div class="col-sm-12">
+          <mat-form-field class="w-100">
+            <mat-label>Director</mat-label>
+            <input
+              matInput
+              [(ngModel)]="film.director"
+              name="director"
+              placeholder="es. Martin Scorsese"
+            />
+          </mat-form-field>
         </div>
       </div>
       <div class="form-group row">
-        <label for="cover_url" class="col-sm-2 col-form-label">cover</label>
-        <div class="col-sm-10">
-          <input
-            type="text"
-            class="form-control"
-            id="cover_url"
-            [(ngModel)]="film.cover_url"
-            name="cover_url"
-            placeholder="Put the link of film's cover here..."
-          />
+        <div class="col-sm-12">
+          <mat-form-field class="w-100">
+            <mat-label>Film duration</mat-label>
+            <input
+              matInput
+              [(ngModel)]="film.duration"
+              name="duration"
+              placeholder="es. 01:29:50"
+            />
+          </mat-form-field>
         </div>
       </div>
       <div class="form-group row">
-        <label for="description" class="col-sm-2 col-form-label"
-          >Film description</label
-        >
-        <div class="col-sm-10">
-          <textarea
-            type="password"
-            class="form-control"
-            id="description"
-            [(ngModel)]="film.description"
-            name="description"
-            placeholder="Write description of the film here..."
-          ></textarea>
+        <div class="col-sm-12">
+          <mat-form-field class="w-100">
+            <mat-label>Release Year</mat-label>
+            <input
+              matInput
+              type="number"
+              [(ngModel)]="film.release_year"
+              name="release_year"
+              placeholder="es. 1999"
+            />
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-sm-12">
+          <mat-form-field class="w-100">
+            <mat-label>Film stars</mat-label>
+            <input
+              matInput
+              [(ngModel)]="film.stars"
+              name="stars"
+              type="number"
+              min="0"
+              max="5"
+              placeholder="from 0 to 5"
+            />
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-sm-12">
+          <mat-form-field class="w-100">
+            <mat-label>Cover</mat-label>
+            <input
+              matInput
+              [(ngModel)]="film.cover_url"
+              name="cover_url"
+              placeholder="Put the link of film's cover here..."
+            />
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-sm-12">
+          <mat-form-field class="w-100">
+            <mat-label>Film description</mat-label>
+            <textarea
+              matInput
+              [(ngModel)]="film.description"
+              name="description"
+              placeholder="Write description of the film here..."
+            ></textarea>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-sm-12">
+          <mat-form-field class="w-100">
+            <mat-label>Your vote</mat-label>
+            <input
+              matInput
+              [(ngModel)]="film.vote"
+              name="vote"
+              placeholder="From 0 to 5"
+            />
+          </mat-form-field>
         </div>
       </div>
       <div class="form-group row">
@@ -142,21 +145,6 @@
           >
             {{ actor.firstname }} {{ actor.lastname }}
           </span>
-        </div>
-      </div>
-      <div class="form-group row position-relative">
-        <label for="vote" class="col-sm-2 col-form-label">Your vote</label>
-        <div class="input-group col-sm-10">
-          <input
-            type="text"
-            class="form-control"
-            id="vote"
-            [(ngModel)]="film.vote"
-            name="vote"
-          />
-          <div class="input-group-append">
-            <span class="input-group-text" id="basic-addon2">from 0 to 5</span>
-          </div>
         </div>
       </div>
       <div class="form-group row">

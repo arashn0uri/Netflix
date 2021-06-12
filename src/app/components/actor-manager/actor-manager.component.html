@@ -13,7 +13,7 @@
   </div>
   <hr class="text-info" />
   <div class="row">
-    <div class="col-md-4 d-flex justify-content-center align-items-center">
+    <div class="col-md-4 d-flex justify-content-center align-items-start">
       <img
         [src]="
           actor.photo_url ||
@@ -21,66 +21,60 @@
         "
         alt=""
         srcset=""
-        class="img-thumbnail mb-3 rounded"
+        class="img-thumbnail mb-3"
       />
     </div>
     <form class="col-md-8">
       <div class="form-group row">
-        <label for="firstname" class="col-sm-2 col-form-label"
-          >First name</label
-        >
-        <div class="col-sm-10">
-          <input
-            type="text"
-            class="form-control"
-            id="firstname"
-            [(ngModel)]="actor.firstname"
-            name="firstname"
-            placeholder="es. Brad"
-          />
+        <div class="col-sm-12">
+          <mat-form-field class="w-100">
+            <mat-label>First name</mat-label>
+            <input
+              matInput
+              [(ngModel)]="actor.firstname"
+              name="firstname"
+              placeholder="es. Brad"
+            />
+          </mat-form-field>
         </div>
       </div>
       <div class="form-group row">
-        <label for="lastname" class="col-sm-2 col-form-label">Last Name</label>
-        <div class="col-sm-10">
-          <input
-            type="text"
-            class="form-control"
-            id="lastname"
-            [(ngModel)]="actor.lastname"
-            name="lastname"
-            placeholder="es. Pitt"
-          />
+        <div class="col-sm-12">
+          <mat-form-field class="w-100">
+            <mat-label>Last name</mat-label>
+            <input
+              matInput
+              [(ngModel)]="actor.lastname"
+              name="lastname"
+              placeholder="es. Pitt"
+            />
+          </mat-form-field>
         </div>
       </div>
       <div class="form-group row">
-        <label for="photo_url" class="col-sm-2 col-form-label">Photo</label>
-        <div class="col-sm-10">
-          <input
-            type="text"
-            class="form-control"
-            id="photo-url"
-            [(ngModel)]="actor.photo_url"
-            name="photo_url"
-            placeholder="Put the link of actor's photo here..."
-          />
+        <div class="col-sm-12">
+          <mat-form-field class="w-100">
+            <mat-label>Photo</mat-label>
+            <input
+              matInput
+              [(ngModel)]="actor.photo_url"
+              name="photo_url"
+              placeholder="Put the link of actor's photo here..."
+            />
+          </mat-form-field>
         </div>
       </div>
-      <div class="form-group row position-relative">
-        <label for="birthdate" class="col-sm-2 col-form-label"
-          >Date of birth</label
-        >
-        <div class="input-group col-sm-10">
-          <input
-            type="text"
-            class="form-control"
-            id="birthdate"
-            [(ngModel)]="actor.birthdate"
-            name="birthdate"
-          />
-          <div class="input-group-append">
-            <span class="input-group-text" id="basic-addon2">(YYYY-MM-DD)</span>
-          </div>
+      <div class="form-group row">
+        <div class="col-sm-12">
+          <mat-form-field class="w-100">
+            <mat-label>Date of birth</mat-label>
+            <input
+              matInput
+              [(ngModel)]="actor.birthdate"
+              name="birthdate"
+              placeholder="es 1990-12-20 (YYYY-MM-DD)"
+            />
+          </mat-form-field>
         </div>
       </div>
       <div class="form-group row justify-content-around">

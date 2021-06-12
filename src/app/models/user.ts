@@ -6,9 +6,9 @@ export interface User {
   lastname: string;
   birthdate: string;
   photo_url: string;
-  favorite_films?: number[];
-  favorite_actors?: number[];
-  favorite_genre?: number[];
+  favorite_films?: string;
+  favorite_actors?: string;
+  favorite_genres?: string;
   token: string;
   last_login?: Date;
 }

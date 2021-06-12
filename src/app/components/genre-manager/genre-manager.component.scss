@@ -1,0 +1,9 @@
+::ng-deep .mat-focused .mat-form-field-label {
+  /*change color of label*/
+  color: rgba(170, 9, 20, 1) !important;
+}
+
+::ng-deep.mat-form-field-ripple {
+  /*change color of underline when focused*/
+  background-color: rgba(170, 9, 20, 1) !important;
+}

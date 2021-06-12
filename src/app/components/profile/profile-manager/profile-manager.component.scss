@@ -1,24 +1,26 @@
+.label {
+  cursor: pointer;
+  padding: 4px;
+  font-size: 13px;
+  transition: all 0.5s linear;
+}
+
+.selected {
+  cursor: default;
+}
+
 .badge {
-  position: absolute;
-  right: 3%;
-  top: 20%;
+  top: -5px;
+  right: -5px;
+  cursor: pointer;
+}
 
-  @media (min-width: 576px) {
-    top: 17%;
-    right: 5%;
-  }
+::ng-deep .mat-focused .mat-form-field-label {
+  /*change color of label*/
+  color: rgba(170, 9, 20, 1) !important;
+}
 
-  @media (min-width: 768px) {
-    top: 12%;
-    right: 5%;
-  }
-
-  @media (min-width: 991px) {
-    top: 17%;
-    right: 4%;
-  }
-
-  @media (min-width: 1200px) {
-    top: 26%;
-  }
+::ng-deep.mat-form-field-ripple {
+  /*change color of underline when focused*/
+  background-color: rgba(170, 9, 20, 1) !important;
 }

@@ -6,6 +6,7 @@ export interface Actor {
   lastname: string;
   photo_url?: string;
   selected?: boolean;
+  fullname?: string;
   birthdate: string;
   created_by?: number;
   created_at?: number;

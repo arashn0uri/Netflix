@@ -10,7 +10,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { FilmListComponent } from './components/film-list/film-list.component';
 import { HeaderComponent } from './components/header/header.component';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { NgxLocalStorageModule } from 'ngx-localstorage';
 import { FilmDetailsComponent } from './components/film-details/film-details.component';
@@ -24,6 +24,12 @@ import { ModifierButtonComponent } from './components/modifier-button/modifier-b
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ModalComponent } from './components/modal/modal.component';
 import { ProfileManagerComponent } from './components/profile/profile-manager/profile-manager.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -53,6 +59,13 @@ import { ProfileManagerComponent } from './components/profile/profile-manager/pr
     FormsModule,
     NgxLocalStorageModule.forRoot(),
     NgbModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatAutocompleteModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    MatIconModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

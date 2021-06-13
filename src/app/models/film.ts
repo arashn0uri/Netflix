@@ -15,5 +15,5 @@ export interface Film {
   genres: any[];
   vote: number;
   votes?: any[];
-  starRating: number;
+  modify?: boolean;
 }

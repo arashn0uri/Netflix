@@ -55,4 +55,8 @@ export class HeaderComponent implements OnInit {
   closeMenu() {
     $('.navbar-collapse').collapse('hide');
   }
+
+  toggle() {
+    if ($('#arrow').has('active')) $('#arrow').removeClass('active');
+  }
 }

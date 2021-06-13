@@ -139,7 +139,7 @@
           <span
             *ngFor="let actor of actors"
             class="border rounded d-inline-block label m-1"
-            [ngClass]="actor.selected ? 'btn-dark' : 'btn-outline-dark'"
+            [ngClass]="actor.selected ? 'btn-light' : 'btn-outline-light'"
             (click)="actorSelectHandler(actor.id)"
             [attr.id]="actor.id"
           >
@@ -153,7 +153,7 @@
           <span
             *ngFor="let genre of genres"
             class="border rounded d-inline-block label m-1"
-            [ngClass]="genre.selected ? 'btn-dark' : 'btn-outline-dark'"
+            [ngClass]="genre.selected ? 'btn-light' : 'btn-outline-light'"
             (click)="genreSelectHandler(genre.name)"
             [attr.id]="genre.name"
           >

@@ -1,6 +1,55 @@
-<div class="fluid-container header">
+<header class="fluid-container header d-flex justify-content-between">
+  <a routerLink="/dashboard"
+    ><img src="../../../assets/netflixMain.png" alt="Logo"
+  /></a>
+  <div class="navMenu" (mouseleave)="toggle()">
+    <div class="navItem">
+      <a routerLink="/films"><span>Films</span></a>
+    </div>
+    <div class="navItem">
+      <a routerLink="/actors"><span>Actors</span></a>
+    </div>
+    <div class="navItem">
+      <a routerLink="/genres"><span>Genre</span></a>
+    </div>
+    <div class="navItem" *ngIf="!userService.loggedUser">
+      <a routerLink="/login"><span>Login</span></a>
+    </div>
+    <div class="navItem" *ngIf="userService.loggedUser">
+      <a routerLink="/profile"><span>Profile</span></a>
+    </div>
+    <div class="navLabel icon">
+      <svg
+        viewBox="0 0 32 42"
+        id="arrow"
+        xmlns="http://www.w3.org/2000/svg"
+        onmouseover="this.classList.add('active')"
+      >
+        <g transform="matrix(1,0,0,1,-389.5,-264.004)">
+          <g id="arrow_left2">
+            <g transform="matrix(1,0,0,1,0,5)">
+              <path
+                id="top"
+                d="M390,270L420,270L420,270C420,270 420.195,250.19 405,265C389.805,279.81 390,279.967 390,279.967"
+              />
+            </g>
+            <g
+              transform="matrix(1,1.22465e-16,1.22465e-16,-1,0.00024296,564.935)"
+            >
+              <path
+                id="bottom"
+                d="M390,270L420,270L420,270C420,270 420.195,250.19 405,265C389.805,279.81 390,279.967 390,279.967"
+              />
+            </g>
+            <path id="middle" d="M390,284.967L420,284.967" />
+          </g>
+        </g>
+      </svg>
+    </div>
+  </div>
+
   <span class="progressBar" id="progressBar"></span>
-  <nav
+  <!-- <nav
     class="navbar navbar-expand-lg navbar-light position-relative"
     (scroll)="onWindowScroll()"
   >
@@ -32,7 +81,7 @@
           >
         </li>
         <li class="nav-item d-flex align-items-center">
-          <a class="nav-link pt-0" routerLink="/films" (click)="closeMenu()"
+          <a class="nav-link pt-0"  (click)="closeMenu()"
             >Films</a
           >
         </li>
@@ -72,8 +121,8 @@
         </li>
       </ul>
     </div>
-  </nav>
+  </nav> -->
   <a class="btn rounded-circle" id="up" (click)="goUp()">
     <fa-icon [icon]="arrowUp"></fa-icon>
   </a>
-</div>
+</header>

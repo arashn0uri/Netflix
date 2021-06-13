@@ -1,16 +1,176 @@
 .searchAdd {
-  @media (max-width: 575px) {
-    margin: 10px 0;
-  }
-
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 10px;
 }
 
 .searchBox {
   &:focus {
     outline: none;
   }
+}
+
+.wave {
+  left: 0;
+  background: linear-gradient(90deg, #f0027f, #75489f);
+  height: 2000px;
+
+  &.wave-1 {
+    top: 0;
+  }
+  &.wave-2 {
+    top: 4000px;
+  }
+  &.wave-3 {
+    top: 5900px;
+  }
+
+  @media (max-width: 575px) {
+    height: 4000px;
+    &.wave-1 {
+      top: 0;
+    }
+    &.wave-2 {
+      top: 8000px;
+    }
+    &.wave-3 {
+      top: 11000px;
+    }
+  }
+}
+
+.custom-shape-divider-bottom-1623538249 {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.custom-shape-divider-top-1623545664 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+::ng-deep .mat-focused .mat-form-field-label {
+  color: #fff !important;
+}
+
+::ng-deep .mat-input-element::placeholder {
+  color: #fff !important;
+}
+
+::ng-deep.mat-form-field-ripple {
+  background-color: #fff !important;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  margin: 0 15px;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+}
+
+.containerButton {
+  align-items: center;
+  display: flex;
+  justify-content: flex-end;
+  text-align: center;
+  background-color: #fff;
+  padding: 20px 0px;
+  width: 240px;
+}
+
+h1 {
+  text-align: left;
+  color: #444;
+  letter-spacing: 0.05em;
+  margin: 0 0 0.4em;
+  font-size: 1em;
+}
+
+p {
+  text-align: left;
+  color: #444;
+  letter-spacing: 0.05em;
+  font-size: 0.8em;
+  margin: 0 0 2em;
+}
+
+.specialButton {
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 45px;
+  max-width: 160px;
+  position: relative;
+  text-decoration: none;
+  text-transform: uppercase;
+  width: 100%;
+}
+
+.matIcon {
+  vertical-align: middle;
+}
+
+.specialButton:hover {
+  text-decoration: none;
+}
+
+/*specialButton_background*/
+.effect04 {
+  --uismLinkDisplay: var(--smLinkDisplay, inline-flex);
+  display: var(--uismLinkDisplay);
+  color: #000;
+  outline: solid 2px #000;
+  position: relative;
+  transition-duration: 0.4s;
+  overflow: hidden;
+}
+
+.effect04::before,
+.effect04 span {
+  margin: 0 auto;
+  transition-timing-function: cubic-bezier(0.86, 0, 0.07, 1);
+  transition-duration: 0.4s;
+}
+
+/* 文字1を上に */
+.effect04:hover {
+  background-color: #000;
+}
+
+/* HOVERしたら文字1を上に */
+.effect04:hover span {
+  -webkit-transform: translateY(-400%) scale(-0.1, 20);
+  transform: translateY(-400%) scale(-0.1, 20);
+}
+
+/*文字2*/
+.effect04::before {
+  content: attr(data-sm-link-text);
+  color: #fff;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  -webkit-transform: translateY(500%) scale(-0.1, 20);
+  transform: translateY(500%) scale(-0.1, 20);
+}
+
+/* HOVERしたら文字2を上に */
+.effect04:hover::before {
+  letter-spacing: 0.05em;
+  -webkit-transform: translateY(0) scale(1, 1);
+  transform: translateY(0) scale(1, 1);
 }

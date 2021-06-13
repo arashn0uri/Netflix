@@ -1,0 +1,48 @@
+<main class="page-content position-relative">
+  <mat-icon
+    *ngIf="modify"
+    class="text-danger matIcon matIconDelete"
+    (click)="openModal()"
+    >delete</mat-icon
+  >
+  <mat-icon
+    *ngIf="modify"
+    class="text-warning matIcon matIconEdit"
+    [routerLink]="link"
+    >edit</mat-icon
+  >
+
+  <div class="position-absolute" style="z-index: 1; top: -30px" *ngIf="vote">
+    <div class="d-flex align-items-center">
+      <span class="text-light d-flex align-items-center" style="font-size: 13px"
+        >RATING:
+      </span>
+      <fa-icon
+        [icon]="fullStar"
+        class="iconGoldColor"
+        *ngFor="let index of createRangeForStar(5, 'gold')"
+      >
+      </fa-icon>
+      <fa-icon
+        [icon]="halfStar"
+        class="iconGoldColor"
+        *ngFor="let index of createRangeForHalfStar(5 % 1, 'silver')"
+      ></fa-icon>
+      <fa-icon
+        [icon]="blankStar"
+        class="iconGoldColor"
+        *ngFor="let index of createRangeForStar(5 - 5, 'silver')"
+      ></fa-icon>
+    </div>
+  </div>
+  <div
+    class="cardSpecial"
+    [ngStyle]="{ 'background-image': 'url(' + img + ')' }"
+  >
+    <div class="content">
+      <h2 class="title">{{ title }}</h2>
+      <p class="copy">{{ description.slice(0, 110) }}...</p>
+      <button class="btnSpecial" [routerLink]="filmLink">Dettagli</button>
+    </div>
+  </div>
+</main>

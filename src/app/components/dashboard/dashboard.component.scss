@@ -5,18 +5,17 @@
   color: silver;
 }
 
-.star {
+.wave {
   position: relative;
-  display: inline-block;
-  font-size: 20px;
-  color: #d3d3d3;
+  background: linear-gradient(90deg, #f0027f, #75489f);
+  height: fit-content;
 }
-.full {
-  color: #ffc107;
-}
-.half {
+
+.custom-shape-divider-bottom-1623538249 {
   position: absolute;
-  display: inline-block;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
   overflow: hidden;
-  color: #ffc107;
+  line-height: 0;
 }

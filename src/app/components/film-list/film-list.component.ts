@@ -27,6 +27,10 @@ export class FilmListComponent implements OnInit {
     observable.subscribe((response) => {
       this.films = response;
       this.showedFilms = response;
+      this.showedFilms = this.showedFilms.map((film) => {
+        film.modify = film.created_by === this.userID;
+        return film;
+      });
       this.isWaiting = false;
     });
 

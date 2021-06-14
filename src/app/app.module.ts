@@ -9,7 +9,6 @@ import { LoginComponent } from './components/login/login.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { FilmListComponent } from './components/film-list/film-list.component';
 import { HeaderComponent } from './components/header/header.component';
-import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { NgxLocalStorageModule } from 'ngx-localstorage';
@@ -39,7 +38,6 @@ import { StreamComponent } from './components/stream/stream.component';
     FooterComponent,
     FilmListComponent,
     HeaderComponent,
-    ResetPasswordComponent,
     DashboardComponent,
     FilmDetailsComponent,
     ProfileComponent,

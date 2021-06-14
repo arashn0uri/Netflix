@@ -68,17 +68,18 @@
     line-height: 0;
   }
 }
+::ng-deep {
+  .mat-focused .mat-form-field-label {
+    color: #fff !important;
+  }
 
-::ng-deep .mat-focused .mat-form-field-label {
-  color: #fff !important;
-}
+  .mat-input-element::placeholder {
+    color: #fff !important;
+  }
 
-::ng-deep .mat-input-element::placeholder {
-  color: #fff !important;
-}
-
-::ng-deep.mat-form-field-ripple {
-  background-color: #fff !important;
+  .mat-form-field-ripple {
+    background-color: #fff !important;
+  }
 }
 
 .buttons {

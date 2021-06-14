@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActorService } from 'src/app/services/actor.service';
 import { Observable } from 'rxjs';
-import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
 import { Actor } from 'src/app/models/actor';
 import { UserService } from 'src/app/services/user.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -13,7 +12,6 @@ import { ModalComponent } from '../modal/modal.component';
   styleUrls: ['./actors.component.scss'],
 })
 export class ActorsComponent implements OnInit {
-  userCircle = faUserCircle;
   isWaiting: boolean = true;
   userID: number | undefined = 0;
   actors: Actor[] = [];

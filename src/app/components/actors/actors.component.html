@@ -72,8 +72,7 @@
       <div class="card">
         <div class="imgBx">
           <img
-            *ngIf="actor.photo_url"
-            [src]="actor.photo_url"
+            [src]="actor.photo_url || '../../../assets/actors.jpg'"
             [alt]="actor.firstname + actor.lastname"
           />
         </div>

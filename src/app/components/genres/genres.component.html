@@ -32,8 +32,7 @@
       <div class="card">
         <div class="imgBx">
           <img
-            *ngIf="genre.photo_url"
-            [src]="genre.photo_url"
+            [src]="genre.photo_url || '../../../assets/genre.jpg'"
             [alt]="genre.name"
           />
         </div>

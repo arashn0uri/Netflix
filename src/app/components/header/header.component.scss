@@ -166,21 +166,7 @@ svg.active #bottom {
 .navItem:nth-child(5) {
   transition-delay: 0.2s;
 }
-.navItem:nth-child(6) {
-  transition-delay: 0.25s;
-}
-.navItem:nth-child(7) {
-  transition-delay: 0.3s;
-}
-.navItem:nth-child(8) {
-  transition-delay: 0.35s;
-}
-.navItem:nth-child(9) {
-  transition-delay: 0.4s;
-}
-.navItem:nth-child(10) {
-  transition-delay: 0.45s;
-}
+
 .navMenu:hover .navItem:nth-child(1) {
   transition-delay: 0.75s;
 }
@@ -195,19 +181,4 @@ svg.active #bottom {
 }
 .navMenu:hover .navItem:nth-child(5) {
   transition-delay: 0.55s;
-}
-.navMenu:hover .navItem:nth-child(6) {
-  transition-delay: 0.5s;
-}
-.navMenu:hover .navItem:nth-child(7) {
-  transition-delay: 0.45s;
-}
-.navMenu:hover .navItem:nth-child(8) {
-  transition-delay: 0.4s;
-}
-.navMenu:hover .navItem:nth-child(9) {
-  transition-delay: 0.35s;
-}
-.navMenu:hover .navItem:nth-child(10) {
-  transition-delay: 0.3s;
 }

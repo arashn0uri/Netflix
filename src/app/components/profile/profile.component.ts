@@ -4,6 +4,7 @@ import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
 import { User } from 'src/app/models/user';
 import { faSignOutAlt as signout } from '@fortawesome/free-solid-svg-icons';
 import { faUserEdit as userEdit } from '@fortawesome/free-solid-svg-icons';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -16,7 +17,7 @@ export class ProfileComponent implements OnInit {
   user: User | null = null;
   img: string = '';
   profile = faUserCircle;
-  constructor(public userService: UserService) {}
+  constructor(public userService: UserService, private router: Router) {}
 
   ngOnInit(): void {
     this.user = this.userService.getLoggedUser();
@@ -27,5 +28,10 @@ export class ProfileComponent implements OnInit {
 
   loggedOut(): void {
     this.user = this.userService.loggedOut();
+    if (this.user == null) {
+      this.router.navigate(['/login']);
+    } else {
+      alert('sign out failed. try again after one minute, please!');
+    }
   }
 }

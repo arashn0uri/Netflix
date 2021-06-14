@@ -42,6 +42,7 @@
     <div class="content">
       <h2 class="title">{{ title }}</h2>
       <p class="copy">{{ description.slice(0, 110) }}...</p>
+      <button class="btnSpecial play" routerLink="/stream"><mat-icon>airplay</mat-icon></button>
       <button class="btnSpecial" [routerLink]="filmLink">Dettagli</button>
     </div>
   </div>

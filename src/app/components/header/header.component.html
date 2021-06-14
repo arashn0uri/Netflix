@@ -1,6 +1,6 @@
 <header class="fluid-container header d-flex justify-content-between">
   <a routerLink="/dashboard"
-    ><img src="../../../assets/netflixMain.png" alt="Logo"
+    ><img src="../../../assets/799px-Netflix_2015_logo.svg.png" alt="Logo"
   /></a>
   <div class="navMenu" (mouseleave)="toggle()">
     <div class="navItem">
@@ -47,81 +47,7 @@
       </svg>
     </div>
   </div>
-
   <span class="progressBar" id="progressBar"></span>
-  <!-- <nav
-    class="navbar navbar-expand-lg navbar-light position-relative"
-    (scroll)="onWindowScroll()"
-  >
-    <a class="navbar-brand d-flex align-items-center" href="#">
-      <img
-        src="../../../assets/netflixMain.png"
-        width="30"
-        height="30"
-        alt=""
-      />
-      <span class="title">NETFLIX</span>
-    </a>
-    <button
-      class="navbar-toggler border-0"
-      type="button"
-      data-toggle="collapse"
-      data-target="#navbarNav"
-      aria-controls="navbarNav"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ml-auto mt-2 py-auto">
-        <li class="nav-item active d-flex align-items-center">
-          <a class="nav-link pt-0" routerLink="/dashboard" (click)="closeMenu()"
-            >Dashboard <span class="sr-only">(current)</span></a
-          >
-        </li>
-        <li class="nav-item d-flex align-items-center">
-          <a class="nav-link pt-0"  (click)="closeMenu()"
-            >Films</a
-          >
-        </li>
-        <li class="nav-item d-flex align-items-center">
-          <a class="nav-link pt-0" routerLink="/actors" (click)="closeMenu()"
-            >Actors</a
-          >
-        </li>
-        <li class="nav-item d-flex align-items-center">
-          <a class="nav-link pt-0" routerLink="/genres" (click)="closeMenu()"
-            >Genres</a
-          >
-        </li>
-        <li
-          class="nav-item d-flex align-items-center"
-          *ngIf="!userService.loggedUser"
-        >
-          <a
-            class="btn btn-primary my-auto"
-            routerLink="/login"
-            (click)="closeMenu()"
-            >Login</a
-          >
-        </li>
-        <li
-          class="nav-item d-flex align-items-center ml-2"
-          *ngIf="userService.loggedUser"
-        >
-          <a routerLink="/profile" (click)="closeMenu()">
-            <img
-              [src]="
-                userService.loggedUser.photo_url ||
-                'http://simpleicon.com/wp-content/uploads/account.png'
-              "
-              class="rounded-circle"
-          /></a>
-        </li>
-      </ul>
-    </div>
-  </nav> -->
   <a class="btn rounded-circle" id="up" (click)="goUp()">
     <fa-icon [icon]="arrowUp"></fa-icon>
   </a>

@@ -12,6 +12,7 @@ import { ActorManagerComponent } from './components/actor-manager/actor-manager.
 import { FilmManagerComponent } from './components/film-manager/film-manager.component';
 import { GenreManagerComponent } from './components/genre-manager/genre-manager.component';
 import { ProfileManagerComponent } from './components/profile/profile-manager/profile-manager.component';
+import { StreamComponent } from './components/stream/stream.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -31,6 +32,7 @@ const routes: Routes = [
   { path: 'edit-actor/:actorID', component: ActorManagerComponent },
   { path: 'add-genre', component: GenreManagerComponent },
   { path: 'edit-genre/:genreID', component: GenreManagerComponent },
+  { path: 'stream', component: StreamComponent },
 ];
 
 @NgModule({

@@ -11,4 +11,5 @@ export interface Actor {
   created_by?: number;
   created_at?: number;
   films?: Film;
+  modify?: boolean;
 }

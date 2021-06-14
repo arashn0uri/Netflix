@@ -34,26 +34,14 @@ export class HeaderComponent implements OnInit {
       String((window.pageYOffset * this.width) / height) + 'px'
     );
     if (window.pageYOffset > this.headerHeight) {
-      if (this.width < 992)
-        $('#navbarNav').css('background-color', 'rgba(0, 0, 0, 0.5)');
-      $('nav').addClass('navbar-dark');
-      $('.header').addClass('dark');
       $('#up').css('display', 'block');
     } else {
-      if (this.width < 992)
-        $('#navbarNav').css('background-color', 'rgba(255, 255, 255, 0.5)');
-      $('nav').removeClass('navbar-dark');
-      $('.header').removeClass('dark');
       $('#up').css('display', 'none');
     }
   }
 
   goUp() {
     window.scroll(0, 0);
-  }
-
-  closeMenu() {
-    $('.navbar-collapse').collapse('hide');
   }
 
   toggle() {

@@ -128,6 +128,21 @@
   color: white;
   background-color: black;
   border: none;
+  transition: background-color 0.5s linear;
+
+  &.play {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    border-radius: 50%;
+
+    &:hover {
+      background-color: red;
+    }
+  }
 }
 .btnSpecial:hover {
   background-color: #0d0d0d;

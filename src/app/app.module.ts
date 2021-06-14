@@ -20,7 +20,6 @@ import { ActorsComponent } from './components/actors/actors.component';
 import { GenresComponent } from './components/genres/genres.component';
 import { ActorManagerComponent } from './components/actor-manager/actor-manager.component';
 import { GenreManagerComponent } from './components/genre-manager/genre-manager.component';
-import { ModifierButtonComponent } from './components/modifier-button/modifier-button.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ModalComponent } from './components/modal/modal.component';
 import { ProfileManagerComponent } from './components/profile/profile-manager/profile-manager.component';
@@ -31,6 +30,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { CardComponent } from './components/card/card.component';
+import { StreamComponent } from './components/stream/stream.component';
 
 @NgModule({
   declarations: [
@@ -48,10 +48,10 @@ import { CardComponent } from './components/card/card.component';
     GenresComponent,
     ActorManagerComponent,
     GenreManagerComponent,
-    ModifierButtonComponent,
     ModalComponent,
     ProfileManagerComponent,
     CardComponent,
+    StreamComponent,
   ],
   imports: [
     BrowserModule,

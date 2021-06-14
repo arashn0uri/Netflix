@@ -34,15 +34,24 @@ $netflix-school-theme: mat-light-theme(
 // that you are using.
 @include angular-material-theme($netflix-school-theme);
 
-/* You can add global styles to this file, and also import other style files */
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
-/* Importing Bootstrap SCSS file. */
+@import url("https://fonts.googleapis.com/css2?family=Staatliches&display=swap");
 @import "~bootstrap/scss/bootstrap";
 
 body {
   font-family: "Roboto", sans-serif;
   background-color: #000;
   overflow-x: hidden;
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 65px;
+    background: linear-gradient(90deg, #75489f, #f0027f);
+  }
 }
 
 .card {

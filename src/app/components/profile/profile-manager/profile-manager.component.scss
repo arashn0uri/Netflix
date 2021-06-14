@@ -15,12 +15,222 @@
   cursor: pointer;
 }
 
-::ng-deep .mat-focused .mat-form-field-label {
-  /*change color of label*/
-  color: rgba(170, 9, 20, 1) !important;
+.mainTitle {
+  font-family: "Staatliches", cursive;
+  color: #000;
+  letter-spacing: 3px;
 }
 
-::ng-deep.mat-form-field-ripple {
-  /*change color of underline when focused*/
-  background-color: rgba(170, 9, 20, 1) !important;
+::ng-deep {
+  input.mat-input-element {
+    color: #fff !important;
+
+    &::placeholder {
+      color: rgba($color: #ffffff, $alpha: 0.8) !important;
+    }
+  }
+
+  .mat-form-field-label {
+    color: #fff !important;
+  }
+
+  .mat-focused .mat-form-field-label {
+    color: #f00 !important;
+  }
+
+  .mat-form-field-ripple {
+    background-color: #fff !important;
+  }
+
+  .mat-form-field-underline {
+    background-color: white !important;
+  }
+}
+
+.wave {
+  left: 0;
+  background: linear-gradient(90deg, #75489f, #f0027f);
+  height: 1000px;
+
+  @media (max-width: 575px) {
+    height: 2000px;
+  }
+
+  .custom-shape-divider-bottom-1623538249 {
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+  }
+}
+
+.goBack {
+  position: absolute;
+  top: 1%;
+  left: 1%;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+
+  #arrowAnim {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .arrowSliding {
+      position: absolute;
+      -webkit-animation: slide 2s linear infinite;
+      animation: slide 2s linear infinite;
+
+      .arrow {
+        width: 10px;
+        height: 10px;
+        border: 2px solid;
+        border-color: rgba($color: #000000, $alpha: 0.8) transparent transparent
+          rgba($color: #000000, $alpha: 0.8);
+        transform: rotate(-45deg);
+      }
+
+      &.delay1 {
+        -webkit-animation-delay: 1s;
+        animation-delay: 1s;
+      }
+      &.delay2 {
+        -webkit-animation-delay: 2s;
+        animation-delay: 2s;
+      }
+      &.delay3 {
+        -webkit-animation-delay: 3s;
+        animation-delay: 3s;
+      }
+    }
+  }
+
+  .goBackText {
+    font-size: 13px;
+    color: rgba($color: #000000, $alpha: 0.8);
+  }
+}
+
+@-webkit-keyframes slide {
+  0% {
+    opacity: 0;
+    transform: translateX(500px);
+  }
+  20% {
+    opacity: 1;
+    transform: translateX(250px);
+  }
+  80% {
+    opacity: 1;
+    transform: translateX(-250px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-500px);
+  }
+}
+@keyframes slide {
+  0% {
+    opacity: 0;
+    transform: translateX(25px);
+  }
+  20% {
+    opacity: 1;
+    transform: translateX(5px);
+  }
+  80% {
+    opacity: 1;
+    transform: translateX(-5px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-25px);
+  }
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  margin: 0 15px;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+
+  .matIcon {
+    vertical-align: middle;
+  }
+
+  .containerButton {
+    align-items: center;
+    display: flex;
+    justify-content: flex-end;
+    text-align: center;
+    width: 160px;
+
+    .specialButton {
+      letter-spacing: 0.1em;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 45px;
+      max-width: 160px;
+      position: relative;
+      text-decoration: none;
+      text-transform: uppercase;
+      width: 100%;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+
+    .effect04 {
+      --uismLinkDisplay: var(--smLinkDisplay, inline-flex);
+      display: var(--uismLinkDisplay);
+      color: #000;
+      position: relative;
+      transition-duration: 0.4s;
+      overflow: hidden;
+
+      &::before {
+        content: attr(data-sm-link-text);
+        color: #fff;
+        position: absolute;
+        left: 0;
+        right: 0;
+        margin: auto;
+        -webkit-transform: translateY(500%) scale(-0.1, 20);
+        transform: translateY(500%) scale(-0.1, 20);
+      }
+
+      &::before,
+      span {
+        margin: 0 auto;
+        transition-timing-function: cubic-bezier(0.86, 0, 0.07, 1);
+        transition-duration: 0.4s;
+      }
+
+      &:hover {
+        background-color: #000;
+
+        &::before {
+          letter-spacing: 0.05em;
+          -webkit-transform: translateY(0) scale(1, 1);
+          transform: translateY(0) scale(1, 1);
+        }
+
+        span {
+          -webkit-transform: translateY(-400%) scale(-0.1, 20);
+          transform: translateY(-400%) scale(-0.1, 20);
+        }
+      }
+    }
+  }
 }

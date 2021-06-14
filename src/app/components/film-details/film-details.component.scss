@@ -6,9 +6,99 @@
 }
 
 img {
+  width: 330px;
+  height: 489px;
   transition: all 0.2s ease;
 }
 
 img:hover {
   transform: scale(0.97);
+}
+
+.wave {
+  left: 0;
+  background: linear-gradient(90deg, #75489f, #f0027f);
+  height: 80vh;
+
+  .custom-shape-divider-bottom-1623538249 {
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+  }
+}
+
+.containerCard {
+  min-height: 489px;
+  width: 300px;
+  position: relative;
+  margin: 0 auto;
+  border-radius: 5px;
+  box-shadow: 0 10px 20px black;
+  background-size: cover;
+  background: #ffffff;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  overflow: hidden;
+  font-family: "Abel", sans-serif;
+  z-index: 1;
+
+  .shape {
+    height: 250px;
+    width: 400px;
+    background-color: black;
+    margin-left: -20px;
+    position: relative;
+    top: -80px;
+    box-shadow: 0 2px 15px black;
+    transform: rotate(25deg);
+
+    .title {
+      height: 200px;
+      width: 200px;
+      position: absolute;
+      left: 52%;
+      top: 125px;
+      transform: translateX(-50%) rotate(-25deg);
+      color: #ffffff;
+    }
+
+    .image {
+      height: 100px;
+      width: 100px;
+      background-position: center center;
+      position: relative;
+      top: 225px;
+      left: 71%;
+    }
+  }
+
+  .subTitle {
+    margin-bottom: 10px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 18px;
+  }
+  .description {
+    margin-bottom: 10px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 14px;
+    width: 274px;
+    margin: 12px auto;
+    text-align: justify;
+  }
+
+  label {
+    width: 274px;
+    margin: 12px auto;
+  }
+
+  .icons {
+    margin: 10px 0;
+    .icon {
+      cursor: pointer;
+    }
+  }
 }

@@ -1,65 +1,75 @@
 <div class="container h-50" *ngIf="!isWaiting">
+  <div class="container-fluid wave pb-5 position-absolute">
+    <div class="custom-shape-divider-bottom-1623538249">
+      <svg
+        data-name="Layer 1"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 1200 120"
+        preserveAspectRatio="none"
+      >
+        <path
+          d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z"
+          class="shape-fill"
+        ></path>
+      </svg>
+    </div>
+  </div>
   <div class="row" *ngIf="!isWaiting">
-    <div class="col-md-6 mt-4 order-md-1">
+    <div class="col-md-6 mt-4 order-md-1 text-center">
       <img
         [src]="film.cover_url"
-        class="card-img-top"
         [alt]="film.title"
         [title]="film.description"
       />
     </div>
     <div class="col-md-6 mt-4 pb-5">
-      <div class="card text-center">
-        <div class="card-body position-relative">
-          <h4 class="card-title"><strong>Title: </strong>{{ film.title }}</h4>
-          <h5><strong>Director: </strong> {{ film.director }}</h5>
-          <h6><strong>Vote: </strong> {{ film.vote }}</h6>
-          <fa-icon
-            [icon]="fullStar"
-            class="iconGoldColor"
-            *ngFor="let index of createRangeForStar(film.vote, 'gold')"
-          >
-          </fa-icon>
-          <fa-icon
-            [icon]="halfStar"
-            class="iconGoldColor"
-            *ngFor="
-              let index of createRangeForHalfStar(film.vote % 1, 'silver')
-            "
-          ></fa-icon>
-          <fa-icon
-            [icon]="blankStar"
-            class="iconGoldColor"
-            *ngFor="let index of createRangeForStar(5 - film.vote, 'silver')"
-          ></fa-icon>
-          <p class="card-text">{{ film.description }}</p>
-          <div class="card-text">
-            <label for="actors"><strong>Actors:</strong></label>
-            <span *ngFor="let actor of film.actors; index as i"
-              >{{ actor.firstname + actor.lastname }},
-            </span>
+      <div class="containerCard">
+        <div class="shape">
+          <div class="title">
+            <h4>{{ film.title }}</h4>
           </div>
-          <div class="text-primary">
-            <span *ngFor="let genre of film.genres">#{{ genre.name }}</span>
+          <div class="image">
+            <fa-icon
+              [icon]="fullStar"
+              class="iconGoldColor"
+              *ngFor="let index of createRangeForStar(film.vote, 'gold')"
+            >
+            </fa-icon>
+            <fa-icon
+              [icon]="halfStar"
+              class="iconGoldColor"
+              *ngFor="
+                let index of createRangeForHalfStar(film.vote % 1, 'silver')
+              "
+            ></fa-icon>
+            <fa-icon
+              [icon]="blankStar"
+              class="iconGoldColor"
+              *ngFor="let index of createRangeForStar(5 - film.vote, 'silver')"
+            ></fa-icon>
           </div>
-          <app-modifier-button
-            [show]="show"
-            [label]="['Elimina']"
-            [name]="film"
-            [field]="['film']"
-          ></app-modifier-button>
-          <app-modifier-button
-            [show]="show"
-            [link]="['/edit-film', film.id]"
-            [label]="['Modifica']"
-            [name]="film"
-            [field]="['film']"
-          ></app-modifier-button>
         </div>
-        <div class="card-footer bg-light">
-          <button class="btn btn-outline-dark" (click)="goBack()">
-            Indietro
-          </button>
+        <h3 class="subTitle"><strong>Director: </strong>{{ film.director }}</h3>
+        <h3 class="description">{{ film.description }}</h3>
+        <label
+          ><strong>Actors:</strong><span> {{ actors.join(", ") }}</span></label
+        >
+        <br />
+        <Label
+          ><strong>Genres: </strong
+          ><span *ngFor="let genre of film.genres" class="text-info"
+            >#{{ genre.name }}
+          </span>
+        </Label>
+        <div
+          class="icons d-flex justify-content-around w-25 align-items-center mx-auto"
+        >
+          <fa-icon
+            [icon]="back"
+            size="lg"
+            class="icon"
+            (click)="goBack()"
+          ></fa-icon>
         </div>
       </div>
     </div>

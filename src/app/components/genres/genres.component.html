@@ -1,39 +1,61 @@
 <div class="container" *ngIf="!isWaiting">
-  <div class="d-flex justify-content-end align-items-center mt-3">
-    <a class="btn btn-outline-info" routerLink="/add-genre"
-      >Aggiungi un genere</a
-    >
+  <div class="container-fluid wave wave-1 pb-5 position-absolute">
+    <div class="custom-shape-divider-bottom-1623538249">
+      <svg
+        data-name="Layer 1"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 1200 120"
+        preserveAspectRatio="none"
+      >
+        <path
+          d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z"
+          class="shape-fill"
+        ></path>
+      </svg>
+    </div>
   </div>
-  <div class="row row-cols-6">
+  <div class="buttons">
+    <div class="containerButton">
+      <a
+        routerLink="/add-genre"
+        class="specialButton effect04"
+        data-sm-link-text="ADD NEW GENRE"
+        ><span><mat-icon class="matIcon">add</mat-icon></span></a
+      >
+    </div>
+  </div>
+  <div class="row">
     <div
-      class="col-12 col-sm-6 col-md-4 col-lg-3 mt-4"
+      class="actorCards col-12 col-sm-6 col-md-4 col-lg-3 mt-5 position-relative"
       *ngFor="let genre of genres"
     >
-      <div class="card h-100 text-center">
-        <fa-icon [icon]="film" size="6x"></fa-icon>
-        <div class="card-body position-relative">
-          <h5>{{ genre.name }}</h5>
-          <app-modifier-button
-            [show]="genre.id > 300 ? true : false"
-            [label]="['Elimina']"
-            [name]="genre"
-            [field]="['genre']"
-          ></app-modifier-button>
-          <app-modifier-button
-            [show]="genre.id > 300 ? true : false"
-            [link]="['/edit-genre', genre.id]"
-            [label]="['Modifica']"
-            [name]="genre"
-            [field]="['genre']"
-          ></app-modifier-button>
+      <div class="card">
+        <div class="imgBx">
+          <img
+            *ngIf="genre.photo_url"
+            [src]="genre.photo_url"
+            [alt]="genre.name"
+          />
         </div>
-        <div class="card-footer bg-light">
-          <a href="#" class="btn btn-outline-info">dettagli</a>
+        <div class="details">
+          <h2>{{ genre.name }}<br /></h2>
         </div>
+        <mat-icon
+          *ngIf="genre.modify"
+          class="text-danger matIcon matIconDelete"
+          (click)="openModal(genre)"
+          >delete</mat-icon
+        >
+        <mat-icon
+          *ngIf="genre.modify"
+          class="text-warning matIcon matIconEdit"
+          [routerLink]="['/edit-genre', genre.id]"
+          >edit</mat-icon
+        >
       </div>
     </div>
   </div>
-</div>
-<div *ngIf="isWaiting" class="modal">
-  <div class="loader"></div>
+  <div *ngIf="isWaiting" class="modal">
+    <div class="loader"></div>
+  </div>
 </div>

@@ -1,0 +1,251 @@
+.titleButton {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 25px;
+
+  @media (max-width: 365px) {
+    flex-direction: column;
+  }
+}
+
+.wave {
+  left: 0;
+  background: linear-gradient(90deg, #75489f, #f0027f);
+  height: 2000px;
+
+  &.wave-1 {
+    top: 0;
+  }
+  &.wave-2 {
+    top: 4000px;
+  }
+  &.wave-3 {
+    top: 5900px;
+  }
+
+  @media (max-width: 575px) {
+    height: 4000px;
+    &.wave-1 {
+      top: 0;
+    }
+    &.wave-2 {
+      top: 8000px;
+    }
+    &.wave-3 {
+      top: 11000px;
+    }
+  }
+
+  .custom-shape-divider-bottom-1623538249 {
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+  }
+
+  .custom-shape-divider-top-1623545664 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+  }
+}
+
+.actorCards {
+  .matIcon {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    z-index: 1;
+    bottom: 10px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: transform 0.3s linear;
+
+    &.matIconDelete {
+      right: 10px;
+    }
+
+    &.matIconEdit {
+      right: 10px;
+      bottom: 35px;
+    }
+
+    &:hover {
+      transform: scale(1.5);
+    }
+  }
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+
+  .matIcon {
+    vertical-align: middle;
+  }
+
+  .containerButton {
+    align-items: center;
+    display: flex;
+    justify-content: flex-end;
+    text-align: center;
+    width: 160px;
+
+    .specialButton {
+      letter-spacing: 0.1em;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 45px;
+      max-width: 160px;
+      outline: 2px solid #000;
+      position: relative;
+      text-decoration: none;
+      text-transform: uppercase;
+      width: 100%;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+
+    .effect04 {
+      --uismLinkDisplay: var(--smLinkDisplay, inline-flex);
+      display: var(--uismLinkDisplay);
+      color: #000;
+      position: relative;
+      transition-duration: 0.4s;
+      overflow: hidden;
+
+      &::before {
+        content: attr(data-sm-link-text);
+        color: #fff;
+        position: absolute;
+        left: 0;
+        right: 0;
+        margin: auto;
+        -webkit-transform: translateY(500%) scale(-0.1, 20);
+        transform: translateY(500%) scale(-0.1, 20);
+      }
+
+      &::before,
+      span {
+        margin: 0 auto;
+        transition-timing-function: cubic-bezier(0.86, 0, 0.07, 1);
+        transition-duration: 0.4s;
+      }
+
+      &:hover {
+        background-color: #000;
+
+        &::before {
+          letter-spacing: 0.05em;
+          -webkit-transform: translateY(0) scale(1, 1);
+          transform: translateY(0) scale(1, 1);
+        }
+
+        span {
+          -webkit-transform: translateY(-400%) scale(-0.1, 20);
+          transform: translateY(-400%) scale(-0.1, 20);
+        }
+      }
+    }
+  }
+}
+
+.card {
+  position: relative;
+  width: 200px;
+  height: 250px;
+  background: #fff;
+  margin: 0 auto;
+  border-radius: 4px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+
+  &:before,
+  &:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+    background: #fff;
+    transition: 0.5s;
+    z-index: -1;
+  }
+
+  &:hover {
+    &:before {
+      transform: rotate(20deg);
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+    }
+    &:after {
+      transform: rotate(10deg);
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .imgBx {
+      bottom: 80px;
+    }
+  }
+
+  .imgBx {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    bottom: 10px;
+    right: 10px;
+    background: #222;
+    transition: 0.5s;
+    z-index: 1;
+
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .details {
+    position: absolute;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    height: 60px;
+    text-align: center;
+
+    h2 {
+      margin: 0;
+      padding: 0;
+      font-weight: 600;
+      font-size: 16px;
+      color: #777;
+      text-transform: uppercase;
+
+      span {
+        font-weight: 500;
+        font-size: 16px;
+        color: #f38695;
+        display: block;
+        margin-top: 5px;
+      }
+    }
+  }
+}

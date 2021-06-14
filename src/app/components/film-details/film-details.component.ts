@@ -6,8 +6,8 @@ import { faStar as fullStar } from '@fortawesome/free-solid-svg-icons';
 import { faStarHalfAlt as halfStar } from '@fortawesome/free-solid-svg-icons';
 import { faStar as blankStar } from '@fortawesome/free-regular-svg-icons';
 import { UserService } from 'src/app/services/user.service';
-import { Film } from 'src/app/models/film';
 import { Location } from '@angular/common';
+import { faChevronCircleLeft as back } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-film-details',
@@ -15,18 +15,19 @@ import { Location } from '@angular/common';
   styleUrls: ['./film-details.component.scss'],
 })
 export class FilmDetailsComponent implements OnInit {
+  back = back;
   fullStar = fullStar;
   halfStar = halfStar;
   blankStar = blankStar;
   isWaiting: boolean = true;
   show: boolean = false;
+  actors: Array<string> = [];
   film: any = {};
 
   constructor(
     private filmService: FilmService,
     private route: ActivatedRoute,
     public userService: UserService,
-    private router: Router,
     private location: Location
   ) {}
 
@@ -37,6 +38,9 @@ export class FilmDetailsComponent implements OnInit {
     observable.subscribe((response) => {
       this.film = response.find(
         (film: { title: string }) => film.title == filmIdFromRoute
+      );
+      this.actors = this.film.actors.map(
+        (actor: any) => `${actor.firstname} ${actor.lastname}`
       );
       this.isWaiting = false;
       this.show =

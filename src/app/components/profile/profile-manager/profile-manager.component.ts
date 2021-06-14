@@ -172,7 +172,7 @@ export class ProfileManagerComponent implements OnInit {
       .subscribe((response) => {
         if (response === null) {
           alert(
-            'editing your favorite actors failed. try again after one minute, please!'
+            'editing your favorite genres failed. try again after one minute, please!'
           );
         }
       });

@@ -10,9 +10,21 @@
   }
 }
 
+.titleButton {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 25px;
+
+  @media (max-width: 365px) {
+    flex-direction: column;
+  }
+}
+
 .wave {
   left: 0;
-  background: linear-gradient(90deg, #f0027f, #75489f);
+  background: linear-gradient(90deg, #75489f, #f0027f);
   height: 2000px;
 
   &.wave-1 {
@@ -37,24 +49,24 @@
       top: 11000px;
     }
   }
-}
 
-.custom-shape-divider-bottom-1623538249 {
-  position: absolute;
-  bottom: -1px;
-  left: 0;
-  width: 100%;
-  overflow: hidden;
-  line-height: 0;
-}
+  .custom-shape-divider-bottom-1623538249 {
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+  }
 
-.custom-shape-divider-top-1623545664 {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  overflow: hidden;
-  line-height: 0;
+  .custom-shape-divider-top-1623545664 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+  }
 }
 
 ::ng-deep .mat-focused .mat-form-field-label {
@@ -74,103 +86,79 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: flex-end;
-  margin: 0 15px;
   text-align: center;
   width: 100%;
   height: 100%;
-}
 
-.containerButton {
-  align-items: center;
-  display: flex;
-  justify-content: flex-end;
-  text-align: center;
-  background-color: #fff;
-  padding: 20px 0px;
-  width: 240px;
-}
+  .matIcon {
+    vertical-align: middle;
+  }
 
-h1 {
-  text-align: left;
-  color: #444;
-  letter-spacing: 0.05em;
-  margin: 0 0 0.4em;
-  font-size: 1em;
-}
+  .containerButton {
+    align-items: center;
+    display: flex;
+    justify-content: flex-end;
+    text-align: center;
+    width: 160px;
 
-p {
-  text-align: left;
-  color: #444;
-  letter-spacing: 0.05em;
-  font-size: 0.8em;
-  margin: 0 0 2em;
-}
+    .specialButton {
+      letter-spacing: 0.1em;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 45px;
+      max-width: 160px;
+      outline: 2px solid #000;
+      position: relative;
+      text-decoration: none;
+      text-transform: uppercase;
+      width: 100%;
 
-.specialButton {
-  letter-spacing: 0.1em;
-  cursor: pointer;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 45px;
-  max-width: 160px;
-  position: relative;
-  text-decoration: none;
-  text-transform: uppercase;
-  width: 100%;
-}
+      &:hover {
+        text-decoration: none;
+      }
+    }
 
-.matIcon {
-  vertical-align: middle;
-}
+    .effect04 {
+      --uismLinkDisplay: var(--smLinkDisplay, inline-flex);
+      display: var(--uismLinkDisplay);
+      color: #000;
+      position: relative;
+      transition-duration: 0.4s;
+      overflow: hidden;
 
-.specialButton:hover {
-  text-decoration: none;
-}
+      &::before {
+        content: attr(data-sm-link-text);
+        color: #fff;
+        position: absolute;
+        left: 0;
+        right: 0;
+        margin: auto;
+        -webkit-transform: translateY(500%) scale(-0.1, 20);
+        transform: translateY(500%) scale(-0.1, 20);
+      }
 
-/*specialButton_background*/
-.effect04 {
-  --uismLinkDisplay: var(--smLinkDisplay, inline-flex);
-  display: var(--uismLinkDisplay);
-  color: #000;
-  outline: solid 2px #000;
-  position: relative;
-  transition-duration: 0.4s;
-  overflow: hidden;
-}
+      &::before,
+      span {
+        margin: 0 auto;
+        transition-timing-function: cubic-bezier(0.86, 0, 0.07, 1);
+        transition-duration: 0.4s;
+      }
 
-.effect04::before,
-.effect04 span {
-  margin: 0 auto;
-  transition-timing-function: cubic-bezier(0.86, 0, 0.07, 1);
-  transition-duration: 0.4s;
-}
+      &:hover {
+        background-color: #000;
 
-/* 文字1を上に */
-.effect04:hover {
-  background-color: #000;
-}
+        &::before {
+          letter-spacing: 0.05em;
+          -webkit-transform: translateY(0) scale(1, 1);
+          transform: translateY(0) scale(1, 1);
+        }
 
-/* HOVERしたら文字1を上に */
-.effect04:hover span {
-  -webkit-transform: translateY(-400%) scale(-0.1, 20);
-  transform: translateY(-400%) scale(-0.1, 20);
-}
-
-/*文字2*/
-.effect04::before {
-  content: attr(data-sm-link-text);
-  color: #fff;
-  position: absolute;
-  left: 0;
-  right: 0;
-  margin: auto;
-  -webkit-transform: translateY(500%) scale(-0.1, 20);
-  transform: translateY(500%) scale(-0.1, 20);
-}
-
-/* HOVERしたら文字2を上に */
-.effect04:hover::before {
-  letter-spacing: 0.05em;
-  -webkit-transform: translateY(0) scale(1, 1);
-  transform: translateY(0) scale(1, 1);
+        span {
+          -webkit-transform: translateY(-400%) scale(-0.1, 20);
+          transform: translateY(-400%) scale(-0.1, 20);
+        }
+      }
+    }
+  }
 }

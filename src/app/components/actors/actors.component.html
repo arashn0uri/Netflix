@@ -1,50 +1,101 @@
-<div class="container" *ngIf="!isWaiting">
-  <div class="d-flex justify-content-end align-items-center mt-3">
-    <a class="btn btn-outline-info" routerLink="/add-actor"
-      >Aggiungi un attore</a
-    >
+<div class="container-fluid" *ngIf="!isWaiting">
+  <div class="container-fluid wave wave-1 pb-5 position-absolute">
+    <div class="custom-shape-divider-bottom-1623538249">
+      <svg
+        data-name="Layer 1"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 1200 120"
+        preserveAspectRatio="none"
+      >
+        <path
+          d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z"
+          class="shape-fill"
+        ></path>
+      </svg>
+    </div>
   </div>
-  <div class="row row-cols-6">
+  <div class="container-fluid wave wave-2 pb-5 position-absolute">
+    <div class="custom-shape-divider-top-1623545664">
+      <svg
+        data-name="Layer 1"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 1200 120"
+        preserveAspectRatio="none"
+      >
+        <path
+          d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
+          class="shape-fill"
+        ></path>
+      </svg>
+    </div>
+  </div>
+  <div class="container-fluid wave wave-3 pb-5 position-absolute">
+    <div class="custom-shape-divider-bottom-1623538249">
+      <svg
+        data-name="Layer 1"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 1200 120"
+        preserveAspectRatio="none"
+      >
+        <path
+          d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z"
+          class="shape-fill"
+        ></path>
+      </svg>
+    </div>
+  </div>
+  <div class="titleButton">
     <div
-      class="col-12 col-sm-6 col-md-4 col-lg-3 mt-4"
+      class="py-3 font-weight-bold d-flex justify-content-between align-items-center position-relative"
+    >
+      <h1 style="font-size: 1.3rem; color: #f2a223; margin-bottom: 0">
+        ACTORs
+      </h1>
+    </div>
+    <div class="buttons">
+      <div class="containerButton">
+        <a
+          routerLink="/add-actor"
+          class="specialButton effect04"
+          data-sm-link-text="ADD NEW ACTOR"
+          ><span><mat-icon class="matIcon">add</mat-icon></span></a
+        >
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div
+      class="actorCards col-12 col-sm-6 col-md-4 col-lg-3 mt-5 position-relative"
       *ngFor="let actor of actors"
     >
-      <div class="card h-100 text-center">
-        <img
-          *ngIf="actor.photo_url"
-          [src]="actor.photo_url"
-          [alt]="actor.firstname + actor.lastname"
-          srcset=""
-          class="img-thumbnail"
-        />
-        <fa-icon
-          *ngIf="!actor.photo_url"
-          [icon]="userCircle"
-          size="6x"
-          class="mt-5"
-        ></fa-icon>
-        <div class="card-body justofy-content-between position-relative">
-          <h5 class="card-title mt-2">
-            {{ actor.firstname }} {{ actor.lastname }}
-          </h5>
-          <p class="card-text">{{ actor.birthdate }}</p>
-          <app-modifier-button
-            [show]="userID && actor.created_by === userID ? true : false"
-            [label]="['Elimina']"
-            [name]="actor"
-            [field]="['attore']"
-          ></app-modifier-button>
-          <app-modifier-button
-            [show]="userID && actor.created_by === userID ? true : false"
-            [link]="['/edit-actor', actor.id]"
-            [label]="['Modifica']"
-            [name]="actor"
-            [field]="['attore']"
-          ></app-modifier-button>
+      <div class="card">
+        <div class="imgBx">
+          <img
+            *ngIf="actor.photo_url"
+            [src]="actor.photo_url"
+            [alt]="actor.firstname + actor.lastname"
+          />
         </div>
-        <div class="card-footer bg-light">
-          <button class="btn btn-outline-info">dettagli</button>
+        <div class="details">
+          <h2>
+            {{ actor.firstname }} {{ actor.lastname }}<br /><span>{{
+              actor.birthdate
+            }}</span>
+          </h2>
         </div>
+        <mat-icon
+          *ngIf="actor.modify"
+          class="text-danger matIcon matIconDelete"
+          (click)="openModal(actor)"
+          >delete</mat-icon
+        >
+        <mat-icon
+          *ngIf="actor.modify"
+          class="text-warning matIcon matIconEdit"
+          [routerLink]="['/edit-actor', actor.id]"
+          >edit</mat-icon
+        >
       </div>
     </div>
   </div>

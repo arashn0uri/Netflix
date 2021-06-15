@@ -47,11 +47,7 @@
 .wave {
   left: 0;
   background: linear-gradient(90deg, #75489f, #f0027f);
-  height: 1400px;
-
-  @media (max-width: 575px) {
-    height: 2000px;
-  }
+  height: 85vh;
 
   .custom-shape-divider-bottom-1623538249 {
     position: absolute;

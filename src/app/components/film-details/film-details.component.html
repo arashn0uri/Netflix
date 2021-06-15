@@ -14,15 +14,15 @@
       </svg>
     </div>
   </div>
-  <div class="row" *ngIf="!isWaiting">
-    <div class="col-md-6 mt-4 order-md-1 text-center">
+  <div class="filmDetails" *ngIf="!isWaiting">
+    <div>
       <img
         [src]="film.cover_url"
         [alt]="film.title"
         [title]="film.description"
       />
     </div>
-    <div class="col-md-6 mt-4 pb-5">
+    <div>
       <div class="containerCard">
         <div class="shape">
           <div class="title">
@@ -51,12 +51,15 @@
         </div>
         <h3 class="subTitle"><strong>Director: </strong>{{ film.director }}</h3>
         <h3 class="description">{{ film.description }}</h3>
-        <label
-          ><strong>Actors:</strong><span> {{ actors.join(", ") }}</span></label
+        <label *ngIf="actors.length"
+          ><strong *ngIf="actors.length == 1">Actor:</strong
+          ><strong *ngIf="actors.length > 1">Actors:</strong>
+          <span> {{ actors.join(", ") }}</span></label
         >
         <br />
-        <Label
-          ><strong>Genres: </strong
+        <Label *ngIf="film.genres.length"
+          ><strong *ngIf="film.genres.length == 1">Genre: </strong
+          ><strong *ngIf="film.genres.length > 1">Genres: </strong
           ><span *ngFor="let genre of film.genres" class="text-info"
             >#{{ genre.name }}
           </span>

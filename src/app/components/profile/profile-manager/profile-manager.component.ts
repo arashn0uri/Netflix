@@ -53,7 +53,7 @@ export class ProfileManagerComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.user = this.userService.getLoggedUser();
+    this.user = this.userService.getUser();
     let actorObservable: Observable<any> = this.actorService.getActors();
     actorObservable.subscribe((response) => {
       this.actors = response;

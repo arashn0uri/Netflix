@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
 import { HostListener } from '@angular/core';
 import { faArrowUp } from '@fortawesome/free-solid-svg-icons';
+import { Router } from '@angular/router';
 declare var $: any;
 
 @Component({
@@ -15,7 +16,7 @@ export class HeaderComponent implements OnInit {
   headerHeight: number = 0;
   width: number = 0;
 
-  constructor(public userService: UserService) {}
+  constructor(public userService: UserService, private router: Router) {}
 
   ngOnInit(): void {
     this.user = this.userService.getLoggedUser();
@@ -23,8 +24,9 @@ export class HeaderComponent implements OnInit {
     this.width = window.innerWidth;
   }
 
-  loggedOut(): void {
+  logout(): void {
     this.user = this.userService.loggedOut();
+    this.router.navigate(['/login']);
   }
   @HostListener('window:scroll', ['$event'])
   onWindowScroll() {

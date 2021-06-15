@@ -5,14 +5,22 @@
   color: silver;
 }
 
+.filmDetails {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @media (max-width: 670px) {
+    flex-direction: column;
+  }
+}
+
 img {
   width: 330px;
   height: 489px;
-  transition: all 0.2s ease;
-}
-
-img:hover {
-  transform: scale(0.97);
+  border-radius: 5px 0 0 5px;
+  position: relative;
+  order: 1;
 }
 
 .wave {
@@ -31,11 +39,11 @@ img:hover {
 }
 
 .containerCard {
-  min-height: 489px;
+  height: 489px;
   width: 300px;
   position: relative;
   margin: 0 auto;
-  border-radius: 5px;
+  border-radius: 0 5px 5px 0;
   box-shadow: 0 10px 20px black;
   background-size: cover;
   background: #ffffff;
@@ -47,7 +55,7 @@ img:hover {
   z-index: 1;
 
   .shape {
-    height: 250px;
+    height: 180px;
     width: 400px;
     background-color: black;
     margin-left: -20px;
@@ -61,7 +69,7 @@ img:hover {
       width: 200px;
       position: absolute;
       left: 52%;
-      top: 125px;
+      top: 100px;
       transform: translateX(-50%) rotate(-25deg);
       color: #ffffff;
     }
@@ -71,8 +79,8 @@ img:hover {
       width: 100px;
       background-position: center center;
       position: relative;
-      top: 225px;
-      left: 71%;
+      top: 160px;
+      left: 68%;
     }
   }
 

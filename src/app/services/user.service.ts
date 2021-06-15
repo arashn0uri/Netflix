@@ -46,6 +46,10 @@ export class UserService {
       );
   }
 
+  getUser(): User | null {
+    return this.loggedUser;
+  }
+
   getLoggedUser(): User | null {
     this.loggedUser = this.storageService.get('loggedUser');
     return this.loggedUser;

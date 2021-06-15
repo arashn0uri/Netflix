@@ -20,7 +20,7 @@ export class ProfileComponent implements OnInit {
   constructor(public userService: UserService, private router: Router) {}
 
   ngOnInit(): void {
-    this.user = this.userService.getLoggedUser();
+    this.user = this.userService.getUser();
     this.img = this.user
       ? this.user.photo_url
       : 'http://simpleicon.com/wp-content/uploads/account.png';

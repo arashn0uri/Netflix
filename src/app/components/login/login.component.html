@@ -1,19 +1,68 @@
-<div class="container d-flex justify-content-center mt-5">
-  <form class=" w-50 shadow-lg p-3 mb-5 bg-white rounded">
-    <div class="form-group">
-      <label for="exampleInputEmail1">Email address</label>
-      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-        [(ngModel)]="username" name="username">
+<div class="container-fluid login">
+  <div class="container-fluid wave wave-1 pb-5 position-absolute">
+    <div class="custom-shape-divider-bottom-1623538249">
+      <svg
+        data-name="Layer 1"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 1200 120"
+        preserveAspectRatio="none"
+      >
+        <path
+          d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z"
+          class="shape-fill"
+        ></path>
+      </svg>
     </div>
-    <div class="form-group">
-      <label for="exampleInputPassword1">Password</label>
-      <input type="password" class="form-control" id="exampleInputPassword1" [(ngModel)]="password" name="password">
+  </div>
+  <div class="session">
+    <div class="left position-relative">
+      <div class="overlay"></div>
+      <video autoplay loop>
+        <source src="../../../assets/movies.mp4" type="video/mp4" />
+      </video>
     </div>
-    <div class="form-group form-check">
-      <input type="checkbox" class="form-check-input" id="exampleCheck1" [(ngModel)]="rememberMe" name="rememberMe">
-      <label class="form-check-label" for="exampleCheck1">Remember me</label>
-    </div>
-    <button class="btn btn-primary" (click)="login()">Login</button>
-    <a class="ml-3 text-muted text-decoration-none" routerLink="/reset"> Forget Password?</a>
-  </form>
+    <form action="" class="log-in" autocomplete="off">
+      <img src="../../../assets/Netflix-logo.png" alt="logo" />
+      <div class="floating-label">
+        <mat-form-field class="w-100">
+          <mat-label>Username</mat-label>
+          <input
+            matInput
+            [(ngModel)]="username"
+            name="username"
+            placeholder="Username"
+            autocomplete="off"
+          />
+        </mat-form-field>
+      </div>
+      <div class="floating-label">
+        <mat-form-field class="w-100">
+          <mat-label>Password</mat-label>
+          <input
+            matInput
+            type="password"
+            [(ngModel)]="password"
+            name="password"
+            placeholder="Password"
+          />
+        </mat-form-field>
+      </div>
+      <mat-checkbox
+        (change)="toggle($event)"
+        [(ngModel)]="rememberMe"
+        name="rememberMe"
+        >Remember me</mat-checkbox
+      >
+      <div class="buttons">
+        <div class="containerButton">
+          <a
+            class="specialButton effect04"
+            data-sm-link-text="LOGIN"
+            (click)="login()"
+            ><span><mat-icon class="matIcon">login</mat-icon></span></a
+          >
+        </div>
+      </div>
+    </form>
+  </div>
 </div>

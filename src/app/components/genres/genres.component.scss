@@ -1,3 +1,14 @@
+.titleButton {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  @media (max-width: 365px) {
+    flex-direction: column;
+  }
+}
+
 .actorCards {
   .matIcon {
     width: 20px;
@@ -48,7 +59,7 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: flex-end;
-  margin: 0 15px;
+  margin: 0 5px;
   text-align: center;
   width: 100%;
   height: 100%;

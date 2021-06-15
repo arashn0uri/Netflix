@@ -5,31 +5,33 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-  username: string = "";
-  password: string = "";
+  username: string = '';
+  password: string = '';
   rememberMe: boolean = false;
-  constructor(
-    private userService: UserService,
-    private router: Router
-  ) { }
+  constructor(private userService: UserService, private router: Router) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   login(): void {
     this.username = this.username.trim();
-    if (!this.username) { return; }
-    this.userService.login(this.username, this.password, this.rememberMe)
-      .subscribe(response => {
+    if (!this.username) {
+      return;
+    }
+    this.userService
+      .login(this.username, this.password, this.rememberMe)
+      .subscribe((response) => {
         if (response !== null) {
           this.router.navigate(['/dashboard']);
         } else {
-          alert("login faild");
+          alert('login faild');
         }
       });
   }
 
+  toggle(event: any) {
+    this.rememberMe = event.checked;
+  }
 }

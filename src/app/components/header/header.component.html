@@ -18,6 +18,9 @@
     <div class="navItem" *ngIf="userService.loggedUser">
       <a routerLink="/profile"><span>Profile</span></a>
     </div>
+    <div class="navItem" *ngIf="userService.loggedUser">
+      <a href="" (click)="logout()"><span>Logout</span></a>
+    </div>
     <div class="navLabel icon">
       <svg
         viewBox="0 0 32 42"

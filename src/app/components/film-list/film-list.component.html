@@ -61,7 +61,7 @@
     >
       <h1 style="font-size: 1.3rem; color: #f2a223; margin-bottom: 0">FILMs</h1>
     </div>
-    <div class="buttons">
+    <div class="buttons" *ngIf="userID">
       <div class="containerButton">
         <a
           routerLink="/add-film"

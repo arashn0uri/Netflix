@@ -16,6 +16,7 @@ import { ModalComponent } from '../modal/modal.component';
 export class GenresComponent implements OnInit {
   film = faFilm;
   isWaiting = true;
+  userID: number | undefined = undefined;
   genres: any[] = [];
   constructor(
     private genreService: GenreService,
@@ -25,6 +26,9 @@ export class GenresComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.userID = this.userService.loggedUser
+      ? this.userService.loggedUser.id
+      : undefined;
     let observable: Observable<any> = this.genreService.getGenres();
     observable.subscribe((response) => {
       this.genres = response;
